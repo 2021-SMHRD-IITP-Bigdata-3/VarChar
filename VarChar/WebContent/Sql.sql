@@ -43,6 +43,9 @@ create table skin_member(
 	constraint skin_id_fk foreign key(skin_id) references skin(skin_id)
 );
 
+insert into skin_member values('asdksd@naver.com', '1234', '이차규', '1999-09-09', null);
+update skin_member set skin_id = 1 where member_name = '이차규';
+
 // skin_record(피부타입 기록) 테이블 추가
 create table skin_record (
 	member_id varchar2(100),

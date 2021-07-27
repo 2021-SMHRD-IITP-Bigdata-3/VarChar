@@ -7,6 +7,14 @@ public class MemberDTO {
 	private String member_birth;
 	private int skin_id;	
 	
+	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+	}
+
 	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, int skin_id) {
 		super();
 		this.member_id = member_id;
