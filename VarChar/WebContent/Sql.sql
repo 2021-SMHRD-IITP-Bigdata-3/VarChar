@@ -32,7 +32,6 @@ insert into skin values(skin_num.nextval, 'DRNT', '피부 복권에 당첨된 것처럼 피�
 select * from skin_member;
 
 // member 테이블 추가(이미 있는 테이블이라서 skin_member로 변경)
-
 create table skin_member(
 	member_id varchar2(100),
 	member_pw varchar2(100) not null,
@@ -43,3 +42,120 @@ create table skin_member(
 	constraint skin_member_id_pk primary key(member_id),
 	constraint skin_id_fk foreign key(skin_id) references skin(skin_id)
 );
+
+// skin_record(피부타입 기록) 테이블 추가
+create table skin_record (
+	member_id varchar2(100),
+	skin_id number,
+	test_date date not null,
+	
+	constraint member_id_fk foreign key(member_id) references skin_member(member_id),
+	constraint skin_record_id_fk foreign key(skin_id) references skin(skin_id)
+);
+
+select * from skin_record;
+
+// product(상품) 테이블 추가
+create table product (
+	product_id number,
+	product_name varchar2(100) not null,
+	product_price number not null,
+	skin_id number,
+	product_manu varchar2(100) not null,
+	product_in varchar2(1000) not null,
+	product_grade number not null,
+	
+	constraint product_id_pk primary key(product_id),
+	constraint product_skin_id_fk foreign key(skin_id) references skin(skin_id)
+);
+
+select * from product;
+
+// 상품 테이블 시퀀스 생성(product_num)
+create sequence product_num
+start with 1 increment by 1;
+
+// review(리뷰) 테이블 생성
+create table review (
+	review_id number,
+	product_id number not null,
+	member_id varchar2(100) not null,
+	review_content varchar2(1000) not null,
+	review_date date not null,
+	review_grade number not null,
+	
+	constraint review_id_pk primary key(review_id),
+	constraint product_id_fk foreign key(product_id) references product(product_id),
+	constraint review_member_id_fk foreign key(member_id) references skin_member(member_id)
+);
+
+select * from review;
+
+// 리뷰 테이블 시퀀스 생성(review_num)
+create sequence review_num
+start with 1 increment by 1;
+
+// board(게시판) 테이블 생성
+create table board (
+	board_id number,
+	board_title varchar2(100) not null,
+	member_id varchar2(100) not null,
+	board_content varchar2(1000) not null,
+	board_date date not null,
+	
+	constraint board_id_pk primary key(board_id),
+	constraint board_member_id_fk foreign key(member_id) references skin_member(member_id)
+);
+
+select * from board;
+
+// 게시판 테이블 시퀀스 생성(board_num)
+create sequence board_num
+start with 1 increment by 1;
+
+// Survey(설문조사) 테이블 생성
+// 기본키인 survey_id는 직접 입력
+create table survey (
+	survey_id varchar2(20),
+	survey_text varchar2(200) not null,
+	survey_option varchar2(200) not null,
+	survey_score number not null,
+	
+	constraint survey_id_pk primary key(survey_id)
+);
+
+select * from survey;
+
+// Notice(공지사항) 테이블 생성
+create table notice(
+	notice_id number,
+	notice_title varchar2(100) not null,
+	notice_content varchar2(1000) not null,
+	notice_date date not null,
+	
+	constraint notice_id_pk primary key(notice_id)
+);
+
+select * from notice;
+
+// 공지사항 테이블 시퀀스 생성(notice_num)
+create sequence notice_num
+start with 1 increment by 1;
+
+// Order(구매내역) 테이블 생성
+// order_id 추가 (기본키 설정)
+create table order_product(
+	order_id number,
+	member_id varchar2(100) not null,
+	product_id number not null,
+	order_quantity number not null,
+	order_date date not null,
+	
+	constraint order_id_pk primary key(order_id),
+	constraint order_member_id_fk foreign key(member_id) references skin_member(member_id),
+	constraint order_product_id_fk foreign key(product_id) references product(product_id)
+);
+
+// 구매내역 테이블 시퀀스 생성(order_num)
+create sequence order_num
+start with 1 increment by 1;
