@@ -162,3 +162,6 @@ create table order_product(
 // 구매내역 테이블 시퀀스 생성(order_num)
 create sequence order_num
 start with 1 increment by 1;
+
+select * from skin_member;
+create table s_member

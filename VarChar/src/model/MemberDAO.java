@@ -19,7 +19,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@211.223.37.175:1521:xe";
 			String id = "hr";
 			String pw = "hr";
 			
