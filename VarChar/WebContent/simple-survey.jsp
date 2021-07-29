@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VarChar규팀 열정!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -794,45 +795,25 @@
           </div>
         </header>
         <main class="h-full overflow-y-auto">
-        <div class="flex flex-wrap">
-        
-        	<!-- popvers -->
-		  <div class="flex p-4 w-full text-center">
-		  	<br/>
-		    <button class="bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="openPopover(event,'popover-id')">
-		    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-			  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-			</svg>
-		    </button>
-		    <div class="hidden bg-teal-600 border-0 mr-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg" id="popover-id">
-		      <div>
-		        <div class="bg-teal-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-blueGray-100 uppercase rounded-t-lg">
-		          테스트 설명
-		        </div>
-		        <div class="text-white p-3">
-		          테스트 설명 상세
-		        </div>
-		      </div>
-		    </div>
+        <!-- 프로그레스 바 적용 -->
+          <div class="relative pt-1 p-4">
+			  <div class="flex mb-2 items-center justify-between">
+			    <div>
+			      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600 bg-teal-200">
+			        Task in progress
+			      </span>
+			    </div>
+			    <div class="text-right">
+			      <span class="text-xs font-semibold inline-block text-teal-600">
+			        30%
+			      </span>
+			    </div>
+			  </div>
+			  <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-teal-200">
+			    <div style="width:30%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500"></div>
+			  </div>
 		  </div>
-		</div>
-		
-          <div class="container px-6 mx-auto grid">
-          <% if(info != null) { %>
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center"
-            >
-              <%= info.getMember_name() %> 님에 대한<br> 
-              	피부타입을 알고싶어요!
-            </h2><br/>
-            <p
-              class="dark:text-gray-200 text-center"
-            >
-            	피부타입 자가진단 후<br/>가장 맞는 화장품을 추천해드릴께요
-            </p>
-            <br/>
-            <% } %>
-          </div>
+		  
           <div class="container px-6 mx-auto grid">
           	
           	<button class="text-teal-500 bg-transparent border-2 border-solid border-teal-500 hover:bg-teal-500 hover:text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
