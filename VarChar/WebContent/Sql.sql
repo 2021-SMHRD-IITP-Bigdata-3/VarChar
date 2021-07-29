@@ -63,15 +63,14 @@ create table product (
 	product_id number,
 	product_name varchar2(100) not null,
 	product_price number not null,
-	skin_id number,
 	product_manu varchar2(100) not null,
-	product_in varchar2(1000) not null,
 	product_grade number not null,
 	
-	constraint product_id_pk primary key(product_id),
-	constraint product_skin_id_fk foreign key(skin_id) references skin(skin_id)
+	constraint product_id_pk primary key(product_id)
 );
 
+ALTER TABLE product DROP COLUMN skin_id;
+ALTER TABLE product DROP COLUMN product_in;
 select * from product;
 
 // 상품 테이블 시퀀스 생성(product_num)
@@ -165,3 +164,40 @@ start with 1 increment by 1;
 
 select * from skin_member;
 create table s_member
+
+// PRODUCT_IN(상품_성분) 테이블 생성
+create table product_in (
+	proin_id number,
+	product_id number not null,
+	ingredient_id number not null,
+	
+	constraint proin_id_pk primary key(proin_id),
+	constraint proin_product_id_fk foreign key(product_id) references product(product_id),
+	constraint ingredient_id_fk foreign key(ingredient_id) references ingredient(ingredient_id)
+)
+
+select * from product_in;
+
+// PRODUCT_IN 시퀀스 생성
+create sequence proin_num
+start with 1 increment by 1;
+
+// INGREDIENT(성분) 테이블 생성
+create table ingredient (
+	ingredient_id number,
+	kor_name varchar2(100) not null,
+	eng_name varchar2(100) not null,
+	o varchar2(2) not null,
+	d varchar2(2) not null,
+	s varchar2(2) not null,
+	p varchar2(2) not null,
+	w varchar2(2) not null,
+	
+	constraint ingredient_id_pk primary key(ingredient_id)
+)
+
+select * from ingredient;
+
+// INGREDIENT 시퀀스 생성
+create sequence ingredient_num
+start with 1 increment by 1;

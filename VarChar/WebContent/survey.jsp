@@ -27,6 +27,7 @@
     ></script>
     <script src="./assets/js/charts-lines.js" defer></script>
     <script src="./assets/js/charts-pie.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
 	<style>
 	</style>
   </head>
@@ -793,6 +794,29 @@
           </div>
         </header>
         <main class="h-full overflow-y-auto">
+        <div class="flex flex-wrap">
+        
+        	<!-- popvers -->
+		  <div class="flex p-4 w-full text-center">
+		  	<br/>
+		    <button class="bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="openPopover(event,'popover-id')">
+		    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+			  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+			</svg>
+		    </button>
+		    <div class="hidden bg-teal-600 border-0 mr-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg" id="popover-id">
+		      <div>
+		        <div class="bg-teal-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-blueGray-100 uppercase rounded-t-lg">
+		          테스트 설명
+		        </div>
+		        <div class="text-white p-3">
+		          테스트 설명 상세
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
           <div class="container px-6 mx-auto grid">
           <% if(info != null) { %>
             <h2
@@ -824,5 +848,19 @@
         </main>
       </div>
     </div>
+    
+    <!-- JavaScript -->
+    <script>
+	  function openPopover(event,popoverID){
+	    let element = event.target;
+	    while(element.nodeName !== "BUTTON"){
+	      element = element.parentNode;
+	    }
+	    var popper = Popper.createPopper(element, document.getElementById(popoverID), {
+	      placement: 'left'
+	    });
+	    document.getElementById(popoverID).classList.toggle("hidden");
+	  }
+	</script>
   </body>
 </html>
