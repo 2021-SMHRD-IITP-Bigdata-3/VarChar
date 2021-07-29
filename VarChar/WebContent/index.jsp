@@ -31,7 +31,9 @@
 	</style>
   </head>
   <body>
-  <% MemberDTO info = (MemberDTO) session.getAttribute("info"); %>
+  <% 
+  	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  %>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen }"
@@ -800,7 +802,7 @@
             <!-- CTA -->
             <a
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="https://www.naver.com/"
+              href="survey.jsp"
             >
               <div class="flex items-center">
                 <svg

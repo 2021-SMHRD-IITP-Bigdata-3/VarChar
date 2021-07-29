@@ -31,7 +31,12 @@
 	</style>
   </head>
   <body>
-  <% MemberDTO info = (MemberDTO) session.getAttribute("info"); %>
+  <% 
+  	MemberDTO info = (MemberDTO) session.getAttribute("info");
+    if(info == null) {
+		response.sendRedirect("login.jsp");
+	}
+  %>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen }"
