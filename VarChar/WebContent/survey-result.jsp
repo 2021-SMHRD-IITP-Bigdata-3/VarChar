@@ -7,7 +7,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VarChar규팀 열정!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -29,10 +28,6 @@
     <script src="./assets/js/charts-lines.js" defer></script>
     <script src="./assets/js/charts-pie.js" defer></script>
     <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
-	<script src="https://unpkg.com/jquery"></script>
-    <script src="https://unpkg.com/survey-jquery@1.8.58/survey.jquery.min.js"></script>
-    <link href="https://unpkg.com/survey-core@1.8.58/modern.min.css" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./index.css"></head>
   </head>
   <body>
   <% 
@@ -797,15 +792,76 @@
           </div>
         </header>
         <main class="h-full overflow-y-auto">
+        <!-- popvers -->
+		<div class="flex flex-wrap p-4 items-center">
+		  <div class="w-full text-center">
+		    <button class="bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="openPopover(event,'popover-id')">
+		      	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+			  		<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+				</svg>
+		    </button>
+		    <div class="hidden bg-teal-600 border-0 mt-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg" id="popover-id">
+		      <div>
+		        <div class="bg-teal-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-blueGray-100 uppercase rounded-t-lg">
+		          	테스트 설명
+		        </div>
+		        <div class="text-white p-3">
+		          	테스트 설명 상세
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
           <div class="container px-6 mx-auto grid">
-          	<div id="surveyElement" style="display:inline-block;width:100%;"></div>
-        	<div id="surveyResult"></div>
+          <% 
+          	int x = Integer.parseInt(request.getParameter("x"));
+          	int y = Integer.parseInt(request.getParameter("y"));
+          	String result = "";
+          	if(info != null) { 
+          %>
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center"
+            >
+              <%= info.getMember_name() %> 님의 피부타입은???<br /> 
+              	<%
+              		if((x>-2 && x<2) && (y>-2 && y<2)) {
+              			result = "중성";	
+              		} else if(x<=0 && y>=0) {
+              			result = "아기피부";
+              		} else if(x<=0 && y<=0) {
+              			result = "건성";
+              		} else if(x>=0 && y>=0) {
+              			result = "지성";
+              		} else if(x>=0 && y<=0) {
+              			result = "건성 & 지성";
+              		}
+              	%>
+              	<strong><%= result %></strong>입니다!
+            </h2><br/>
+            <p
+              class="dark:text-gray-200 text-center"
+            >
+            	피부타입 자가진단 후<br/>가장 맞는 화장품을 추천해드릴께요
+            </p>
+            <br/>
+            <% } %>
           </div>
+          <div class="container px-6 mx-auto grid">
+          	
+          	<button class="text-teal-500 bg-transparent border-2 border-solid border-teal-500 hover:bg-teal-500 hover:text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+          			style="border-color:#A4FFFF"
+		    >
+		    <a href="simple-survey.jsp">
+			  추천화장품 보러갈래?
+			 </a>
+			</button>
+			</div>
         </main>
       </div>
     </div>
     
-    <!-- JavaScript -->
+    <!-- Popovers JavaScript -->
     <script>
 	  function openPopover(event,popoverID){
 	    let element = event.target;
@@ -813,177 +869,10 @@
 	      element = element.parentNode;
 	    }
 	    var popper = Popper.createPopper(element, document.getElementById(popoverID), {
-	      placement: 'left'
+	      placement: 'bottom'
 	    });
 	    document.getElementById(popoverID).classList.toggle("hidden");
 	  }
-	</script>
-	<!-- survey -->
-	<script type="text/javascript" src="./index.js"></script>
-	<script>
-			Survey
-		    .StylesManager
-		    .applyTheme("modern");
-		
-		var json = {
-		    "title": "기초 자가진단 설문조사",
-		    "showProgressBar": "top",
-		     "goNextPageAutomatic": true,
-		     "showNavigationButtons": false,
-		    "pages": [
-		        {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question1",
-		                    "title": "모공크기",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "매우 잘 보여요."
-		                        }, {
-		                            "value": 0,
-		                            "text": "바늘 끝부분 크기 정도로 보여요."
-		                        }, {
-		                            "value": -1,
-		                            "text": "잘 안보여요."
-		                        }
-		                    ]
-		                }
-		            ]
-		        }, {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question2",
-		                    "title": "여드름",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "여드름과 여드름 흉터가 많이 있어요.(과거포함)"
-		                        }, {
-		                            "value": 0,
-		                            "text": "여드름과 여드름 흉터가 약간 있어요.(과거포함)"
-		                        }, {
-		                            "value": -1,
-		                            "text": "거의 없어요."
-		                        }
-		                    ]
-		                }
-		            ]
-		        }, {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question3",
-		                    "title": "기름기",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "머리를 감으면 하루가 지나면 기름이 지고 평소 T존이 번들거려요."
-		                        }, {
-		                            "value": 0,
-		                            "text": "머리를 감으면 이틀까지는 괜찮아요."
-		                        }, {
-		                            "value": -1,
-		                            "text": "머리를 감고 시간이 지나도 기름지지 않고 평소 T존도 깨끗해요."
-		                        }
-		                    ]
-		                }
-		            ]
-		        }, {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question4",
-		                    "title": "나이",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "15세 미만"
-		                        }, {
-		                            "value": 0,
-		                            "text": "15 ~ 24세"
-		                        }, {
-		                            "value": -1,
-		                            "text": "25세 이상"
-		                        }
-		                    ]
-		                }
-		            ]
-		        }, {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question5",
-		                    "title": "각질",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "건조한 계절에 보습을 안해도 각질이 생기지 않아요."
-		                        }, {
-		                            "value": 0,
-		                            "text": "건조한 계절에 보습을 해줘야 각질이 생기지 않아요."
-		                        }, {
-		                            "value": -1,
-		                            "text": "여름에도 보습을 해줘야 각질이 생기지 않아요."
-		                        }
-		                    ]
-		                }
-		            ]
-		        }, {
-		            "questions": [
-		                {
-		                    "type": "radiogroup",
-		                    "name": "question6",
-		                    "title": "아토피 or 가려움",
-		                    "choices": [
-		                        {
-		                            "value": 1,
-		                            "text": "아토피도 없고 따로 피부관리를 안해도 가려움증이 없어요."
-		                        }, {
-		                            "value": 0,
-		                            "text": "아토피는 없지만 피부관리를 안하면 가려움증이 있어요."
-		                        }, {
-		                            "value": -1,
-		                            "text": "아토피도 없고 가려움증도 없어요."
-		                        }
-		                    ]
-		                }
-		            ]
-		        }
-		    ],
-		    completedHtml: "<p> 테스트 완료 </p>"
-		};
-		
-		window.survey = new Survey.Model(json);
-		
-		var x = parseInt(0);
-		var y = parseInt(0);
-		var len = survey.pages.length;
-		
-		survey
-		    .onComplete
-		    .add(function (sender) {
-		        document
-		            .querySelector('#surveyResult')
-		            // .textContent = "Result JSON:\n" + JSON.stringify(sender.data, null, 3);
-				
-				for(var i = 0; i < len; i++) {
-					var name = "question" + (i+1);
-					console.log(name);
-					if(i < 3) {
-						x += parseInt(survey.data[name]);
-						console.log(x);
-					} else {
-						y += parseInt(survey.data[name]);
-						console.log(y);
-					}
-				}
-				location.href = "survey-result.jsp?x=" + x + "&y=" + y;
-		    });
-		
-		$("#surveyElement").Survey({model: survey});
 	</script>
   </body>
 </html>
