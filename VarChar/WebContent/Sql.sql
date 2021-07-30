@@ -12,6 +12,7 @@ create sequence skin_num
 start with 1 increment by 1;
 
 // Skin(피부타입) 테이블 데이터 삽입
+insert into skin values(0, '기본타입', '테스트 안한 유저입니다.');
 insert into skin values(skin_num.nextval, 'OSPT', '피지-염증-색소침착의 악순환이 반복되고 검은 점이 더 오래 남아 있는 피부입니다.');
 insert into skin values(skin_num.nextval, 'OSNT', '감정 변화나 다양한 자극으로 쉽게 얼굴이 붉어지고 곳곳에 여드름이 보이는 피부입니다.');
 insert into skin values(skin_num.nextval, 'OSPW', '다양한 피부트러블과 함께 색소침착, 노화까지 겪고 있는 총체적 난국의 피부입니다.');
@@ -29,6 +30,7 @@ insert into skin values(skin_num.nextval, 'DRNW', '젋었을 때 좋은 피부를 유지하�
 insert into skin values(skin_num.nextval, 'DRPT', '자외선으로 기미, 검은 반점이 나타나기 쉽지만 아름답게 관리할 수 있는 피부입니다.');
 insert into skin values(skin_num.nextval, 'DRNT', '피부 복권에 당첨된 것처럼 피부 결이 좋고 깨끗한 피부입니다.');
 
+select * from skin;
 select * from skin_member;
 
 // member 테이블 추가(이미 있는 테이블이라서 skin_member로 변경)
@@ -37,14 +39,14 @@ create table skin_member(
 	member_pw varchar2(100) not null,
 	member_name varchar2(20) not null,
 	member_birth date not null,
-	skin_id number,
+	skin_id number not null,
 	
 	constraint skin_member_id_pk primary key(member_id),
 	constraint skin_id_fk foreign key(skin_id) references skin(skin_id)
 );
 
 insert into skin_member values('asdksd@naver.com', '1234', '이차규', '1999-09-09', null);
-update skin_member set skin_id = 1 where member_name = '이차규';
+update skin_member set skin_id = 1 where member_name = 'tkckrb';
 
 // skin_record(피부타입 기록) 테이블 추가
 create table skin_record (

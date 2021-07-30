@@ -21,10 +21,11 @@ public class CreateServiceCon extends HttpServlet {
 		String name = request.getParameter("name");
 		String date = request.getParameter("date");
 		
-		MemberDTO dto = new MemberDTO(id, pw, name, date);
+		MemberDTO dto = new MemberDTO(id, pw, name, date, 0);
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.join(dto);
 		
+		System.out.println(dto.getMember_id());
 		if(cnt > 0) {
 			System.out.println("회원가입 성공");
 		} else {
