@@ -17,18 +17,6 @@
       defer
     ></script>
     <script src="./assets/js/init-alpine.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
-    />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-      defer
-    ></script>
-    <script src="./assets/js/charts-lines.js" defer></script>
-    <script src="./assets/js/charts-pie.js" defer></script>
-	<style>
-	</style>
   </head>
   <body>
   <% 
@@ -416,7 +404,7 @@
             <!-- ·Î°í -->
             <img
               class="object-cover"
-              src="logo_main.png"
+              src="./assets/img/logo_main.png"
 			  width = "150px"
               alt="logo"
 			  align="left"
@@ -550,7 +538,6 @@
             
             
             </div>
-          </div>
         </main>
       </div>
     </div>
