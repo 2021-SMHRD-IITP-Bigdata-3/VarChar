@@ -17,6 +17,7 @@
       defer
     ></script>
     <script src="./assets/js/init-alpine.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
   </head>
   <body>
   <% 
@@ -572,5 +573,6 @@
 	    document.getElementById(popoverID).classList.toggle("hidden");
 	  }
 	</script>
+	
   </body>
 </html>

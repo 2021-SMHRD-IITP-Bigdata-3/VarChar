@@ -473,7 +473,7 @@ var json = {
 		                }, {
 		                    "type": "radiogroup",
 		                    "name": "sr12",
-		                    "visibleIf": "{sr10} notempty",
+		                    "visibleIf": "{sr11} notempty",
 		                    "title": "가족 중에 아토피, 습진, 알레르기, 천식을 가지고 있는 사람이 있나요?",
 		                    "choices": [
 		                    	{
@@ -1331,12 +1331,55 @@ var json = {
 
 	window.survey = new Survey.Model(json);
 	
+	var od = parseInt(0);
+	var pn = parseInt(0);
+	var sr = parseInt(0);
+	var wt = parseInt(0);
+	var result = "";
+	
 	survey
 	    .onComplete
 	    .add(function (sender) {
 	        document
 	            .querySelector('#surveyResult')
-	            .textContent = "Result JSON:\n" + JSON.stringify(sender.data, null, 3);
+	            // .textContent = "Result JSON:\n" + JSON.stringify(sender.data, null, 3);
+			var name = "";
+			
+			for(var i=1; i<=62; i++) {
+				if(i < 12) {
+					name = "od" + i;
+					od += parseInt(survey.data[name]);
+				} else if(i < 31) {
+					name = "sr" + (i - 11);
+					var val = survey.data[name];
+					if(i < 14 && val == true) {
+						val = (i==12) ? 5 : 2;
+					}
+					sr += parseInt(val);
+				} else if(i < 42) {
+					name = "pn" + (i - 30);
+					var val = survey.data[name];
+					if(i == 31 && val == true) {
+						val = 5;
+					}
+					pn += parseInt(val);
+				} else {
+					name = "wt" + (i - 41);
+					var val = survey.data[name];
+					if(i == 42 && val == true) {
+						val = 5;
+					}
+					wt += parseInt(val);
+				}
+			}
+			
+			result += (od < 27) ? "D" : "O";
+			result += (sr < 30) ? "S" : "R";
+			result += (pn < 31) ? "N" : "P";
+			result += (wt < 41) ? "T" : "W";
+			console.log(result);
+			
+			location.href = "SurveyServiceCon?result=" + result; 
 	    });
 	
 	survey.showQuestionNumbers = "off";
