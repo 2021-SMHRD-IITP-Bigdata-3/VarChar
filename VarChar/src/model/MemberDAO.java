@@ -19,7 +19,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			String url = "jdbc:oracle:thin:@211.223.37.175:1521:xe";
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String id = "hr";
 			String pw = "hr";
 			
@@ -50,12 +50,13 @@ public class MemberDAO {
 		conn();
 		
 		try { 
-			String sql = "insert into skin_member values(?, ?, ?, ?, null)";
+			String sql = "insert into skin_member values(?, ?, ?, ?, ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getMember_id());
 			psmt.setString(2, dto.getMember_pw());
 			psmt.setString(3, dto.getMember_name());
 			psmt.setString(4, dto.getMember_birth());
+			psmt.setInt(5, dto.getSkin_id());
 			
 			cnt = psmt.executeUpdate();
 		} catch(Exception e) {
@@ -92,5 +93,22 @@ public class MemberDAO {
 			close();
 		}
 		return info;
+	}
+	
+	public int updateSkin(String id, String skin_type) {
+		try {
+			conn();
+			String sql = "update skin_member set skin_id = (select skin_id from skin where skin_type = ?) where member_name = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, skin_type);
+			psmt.setString(2, id);
+			
+			cnt = psmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
 	}
 }
