@@ -27,13 +27,9 @@
       :class="{ 'overflow-hidden': isSideMenuOpen }"
     >
       <!-- 웹 버전 사이드 바 -->
-      <aside
-        class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 where" 
-      >
+      <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 where">
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-          >
+          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200">
           </a>
           <ul class="mt-6">
           	<% if(info != null) { %>
@@ -402,6 +398,7 @@
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
           >
             <!-- 로고 -->
+            <a href="index.jsp">
             <img
               class="object-cover"
               src="./assets/img/logo_main.png"
@@ -409,6 +406,7 @@
               alt="logo"
 			  align="left"
             />
+            </a>
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
               <div
@@ -500,15 +498,12 @@
         <main class="h-full overflow-y-auto">
           <div class="container px-6 mx-auto grid">
           <% if(info != null) { %>
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               <%= info.getMember_name() %>님
               <br>피부에 양보하세요!
             </h2>
             <% } %>
-            <!-- 본문 -->
-            
+<!-- 본문 시작 -->
             <!-- 한 칸 띄어주기 -->
             <div><br></div>
                  

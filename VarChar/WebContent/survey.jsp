@@ -406,6 +406,7 @@
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
           >
             <!-- ·Î°í -->
+            <a href="index.jsp">
             <img
               class="object-cover"
               src="./assets/img/logo_main.png"
@@ -413,6 +414,7 @@
               alt="logo"
 			  align="left"
             />
+            </a>
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
               <div
