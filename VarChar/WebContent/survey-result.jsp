@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.SkinDTO" %>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
@@ -22,6 +23,8 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	SkinDTO skin_dto = (SkinDTO) session.getAttribute("skin_dto");
+
 	if(info == null) {
 		response.sendRedirect("login.jsp");
 	}
@@ -506,34 +509,18 @@
 
           <div class="container px-6 mx-auto grid">
           <% 
-          	int x = Integer.parseInt(request.getParameter("x"));
-          	int y = Integer.parseInt(request.getParameter("y"));
-          	String result = "";
-          	if(info != null) { 
+          	if(skin_dto != null) { 
           %>
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center"
             >
-              <%= info.getMember_name() %> 님의 피부타입은???<br /> 
-              	<%
-              		if((x>-2 && x<2) && (y>-2 && y<2)) {
-              			result = "중성";	
-              		} else if(x<=0 && y>=0) {
-              			result = "아기피부";
-              		} else if(x<=0 && y<=0) {
-              			result = "건성";
-              		} else if(x>=0 && y>=0) {
-              			result = "지성";
-              		} else if(x>=0 && y<=0) {
-              			result = "건성 & 지성";
-              		}
-              	%>
-              	<strong><%= result %></strong>입니다!
+              <%= info.getMember_name() %> 님의 피부타입은<br /> 
+              	<strong><%= skin_dto.getSkin_Type() %></strong>입니다!
             </h2><br/>
             <p
               class="dark:text-gray-200 text-center"
             >
-            	피부타입 자가진단 후<br/>가장 맞는 화장품을 추천해드릴께요
+            	<%= skin_dto.getSkin_Exp() %>
             </p>
             <br/>
             <% } %>
@@ -551,19 +538,5 @@
         </main>
       </div>
     </div>
-    
-    <!-- Popovers JavaScript -->
-    <script>
-	  function openPopover(event,popoverID){
-	    let element = event.target;
-	    while(element.nodeName !== "BUTTON"){
-	      element = element.parentNode;
-	    }
-	    var popper = Popper.createPopper(element, document.getElementById(popoverID), {
-	      placement: 'bottom'
-	    });
-	    document.getElementById(popoverID).classList.toggle("hidden");
-	  }
-	</script>
   </body>
 </html>

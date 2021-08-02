@@ -29,6 +29,11 @@ insert into skin values(skin_num.nextval, 'DRPW', '°ú°Å ÇÇºÎ¿¡ ¹®Á¦°¡ ¾ø¾î ¹æÄ¡Ç
 insert into skin values(skin_num.nextval, 'DRNW', ' Œ¾úÀ» ¶§ ÁÁÀº ÇÇºÎ¸¦ À¯ÁöÇÏÁö¸¸, °ÇÁ¶ÇÔ°ú ÇÔ²² ºü¸¥ ³ëÈ­¸¦ °Ş´Â ÇÇºÎÀÔ´Ï´Ù.');
 insert into skin values(skin_num.nextval, 'DRPT', 'ÀÚ¿Ü¼±À¸·Î ±â¹Ì, °ËÀº ¹İÁ¡ÀÌ ³ªÅ¸³ª±â ½±Áö¸¸ ¾Æ¸§´ä°Ô °ü¸®ÇÒ ¼ö ÀÖ´Â ÇÇºÎÀÔ´Ï´Ù.');
 insert into skin values(skin_num.nextval, 'DRNT', 'ÇÇºÎ º¹±Ç¿¡ ´çÃ·µÈ °ÍÃ³·³ ÇÇºÎ °áÀÌ ÁÁ°í ±ú²ıÇÑ ÇÇºÎÀÔ´Ï´Ù.');
+insert into skin values(skin_num.nextval, '¾Æ±âÇÇºÎ', '°¡Àå ÀÌ»óÀûÀÎ ¼öºĞ ¸¹°í, À¯ºĞÀÌ ÀûÀº ÇÇºÎ¿¡¿ä!!');
+insert into skin values(skin_num.nextval, 'Áß¼º', 'ÇÇºÎ°¡ ºÎµå·¯¿ì¸ç, ¸ğ°øÀÌ ÀÛ°í ¾ó±¼ÀÌ ÁÁ¾Æº¸ÀÔ´Ï´Ù. °Å¿ï ¼Ó¿¡ ÀÌ·± ¾ó±¼ÀÌ º¸ÀÎ´Ù¸é, Áß¼º ÇÇºÎÀÔ´Ï´Ù.');
+insert into skin values(skin_num.nextval, 'Áö¼º', 'Áö¼º ÇÇºÎ´Â ¸ğ°øÀÌ Å©°í ÇÇºÎ¿¡ À¯ºĞÀÌ ¸¹½À´Ï´Ù. ÀÌ´Â ÇÇºÎ¸¦ À±±â¸¦ ÁÖ°í ¼öºĞÀ» Â÷´ÜÇÏ´Â ÇÇÁö ºĞºñ°¡ ¿Õ¼ºÇÏ±â ¶§¹®ÀÔ´Ï´Ù.');
+insert into skin values(skin_num.nextval, '°Ç¼º', '°Ç¼º ÇÇºÎ¸¦ °¡Áø »ç¶÷Àº ´ëºÎºĞ ¸ğ°øÀÌ º¸ÀÌÁö ¾ÊÀ¸¸ç ÇÇºÎ¿¡ »ı±â°¡ ¾ø°í °ÅÄ¥°Ô º¸ÀÌ´Â °æÇâÀÌ ÀÖ½À´Ï´Ù. ¶ÇÇÑ ÇÇºÎ¿¡ ºÓÀº ¹İÁ¡°ú ÁÖ¸§ÀÌ ³ªÅ¸³ª±âµµ ÇÕ´Ï´Ù.');
+insert into skin values(skin_num.nextval, 'º¹ÇÕ¼º', 'º¹ÇÕ¼º ÇÇºÎÀÇ °æ¿ì °ÇÁ¶ÇÔ°ú ¹øµé°Å¸²ÀÌ µ¿½Ã¿¡ ÀÖÀ» °¡´É¼ºÀÌ ³ô½À´Ï´Ù. ¿¹¸¦ µé¾î, ÀÌ¸¶, ÄÚ, ÅÎ (T Á¸)Àº Áö¼ºÀÌÁö¸¸, º¼Àº °ÇÁ¶ÇÒ ¼ö ÀÖ½À´Ï´Ù.');
 
 select * from skin;
 select * from skin_member;
@@ -354,4 +359,5 @@ insert into ingredient values(ingredient_num.nextval, 'Æú¸®¿¡Åå½Ç·¹ÀÌÆ¼µå·¹Æ¾¾Æ¸
 select * from ingredient;
 
 select * from skin_member;
-update skin_member set skin_id = (select skin_id from skin where skin_type = 'DSNT') where member_id = '»ïÂ÷±Ô';
+select * from skin;
+update skin_member set skin_id = (select skin_id from skin where skin_type = 'Áö¼º') where member_name = '¹Ù¹ÙÂ÷±Ô';

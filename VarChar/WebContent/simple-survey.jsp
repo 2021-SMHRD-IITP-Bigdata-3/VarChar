@@ -671,6 +671,7 @@
 		var x = parseInt(0);
 		var y = parseInt(0);
 		var len = survey.pages.length;
+		var result = "";
 		
 		survey
 		    .onComplete
@@ -690,7 +691,20 @@
 						console.log(y);
 					}
 				}
-				location.href = "survey-result.jsp?x=" + x + "&y=" + y;
+				
+				if((x>-2 && x<2) && (y>-2 && y<2)) {
+          			result = "중성";	
+          		} else if(x<=0 && y>=0) {
+          			result = "아기피부";
+          		} else if(x<=0 && y<=0) {
+          			result = "건성";
+          		} else if(x>=0 && y>=0) {
+          			result = "지성";
+          		} else if(x>=0 && y<=0) {
+          			result = "복합성";
+          		}
+				
+				location.href = "SurveyServiceCon?result=" + result;
 		    });
 		
 		$("#surveyElement").Survey({model: survey});
