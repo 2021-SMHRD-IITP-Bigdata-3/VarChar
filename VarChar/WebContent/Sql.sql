@@ -356,8 +356,34 @@ insert into ingredient values(ingredient_num.nextval, '아데노신', 'Adeosine', 'n
 insert into ingredient values(ingredient_num.nextval, '펩타이드', 'Peptide', 'n', 'n', 'n', 'n', 'g');
 insert into ingredient values(ingredient_num.nextval, '폴리에톡실레이티드레틴아마이드', 'Polyethoxylated Retinamide', 'n', 'n', 'n', 'n', 'g');
 
-select * from ingredient;
+update ingredient set kor_name = '부틸렌글라이콜' where kor_name = '부틸렌글라이콘';
+delete from ingredient where kor_name = '알란토인' and eng_name = 'Echinacea Pallida Extract';
+select * from ingredient where kor_name = '알란토인';
 
 select * from skin_member;
 select * from skin;
 update skin_member set skin_id = (select skin_id from skin where skin_type = '지성') where member_name = '바바차규';
+
+insert into product values(상품_id, 상품이름, 상품가격, 회사, 별점);
+---------------------------------------------------------------------------
+insert into product values(product_num.nextval, '구달 청귤 비타C 잡티 세럼플러스 70ml', 45000, '구달', 0);
+insert into product values(product_num.nextval, '구달 청귤 비타C 잡티 세럼마스크(6+4매)', 18000, '구달', 0);
+insert into product values(product_num.nextval, '브링그린 티트리 시카 수딩 토너 510ml', 22000, '브링그린', 0);
+insert into product values(product_num.nextval, '에스트라 아토베리어 365 하이드로 수딩크림 60ml', 30000, '에스트라', 0);
+insert into product values(product_num.nextval, '닥터지 레드블레미쉬 클리어 수딩 크림(50ml+50ml+50ml)', 39000, '닥터지', 0);
+insert into product values(product_num.nextval, '아이소이 불가리안 로즈 블레미쉬 케어 업 세럼(더블세트)', 54000, '아이소이', 0);
+insert into product values(product_num.nextval, '아누아 어성초 77 토너 500ml', 45000, '아누아', 0);
+insert into product values(product_num.nextval, '브링그린 티트리 시카 수딩 크림(100ml)', 16000, '브링그린', 0);
+insert into product values(product_num.nextval, '토리든 다이브인 세럼(더블기획세트)', 36000, '토리든', 0);
+insert into product values(product_num.nextval, '리얼베리어 아쿠아 수딩크림 50ml', 30000, '리얼베리어', 0);
+insert into product values(product_num.nextval, '라운드랩 자작나무 수분크림 80ml', 32000, '라운드랩', 0);
+insert into product values(product_num.nextval, '마녀공장 비피다 바이옴 콤플렉스 앰플(30ml 더블기획)', 35000, '마녀공장', 0);
+insert into product values(product_num.nextval, '아벤느 에센스-인-로션 200ml', 28000, '아벤느', 0);
+insert into product values(product_num.nextval, '에스트라 아토베리어365 로션 150ml', 28000, '에스트라', 0);
+insert into product values(product_num.nextval, '에스트라 아토베리어365 하이드로 에센스 150ml', 25000, '에스트라', 0);
+insert into product values(product_num.nextval, '아벤느 아쿠아 크림-인-젤 100ml', 42000, '아벤느', 0);
+insert into product values(product_num.nextval, '웰라쥬 리얼 히알루로닉 블루100 앰플(기획)', 28000, '웰라쥬', 0);
+insert into product values(product_num.nextval, '닥터지 레드 블레미쉬 클리어 수딩 토너 500ml', 39000, '닥터지', 0);
+insert into product values(product_num.nextval, '에스트라 아토베리어 365 크림 80ml', 28000, '에스트라', 0);
+insert into product values(product_num.nextval, '리얼베리어 익스트림 크림 50ml(기획+20ml 증정)', 38000, '리얼베리어', 0);
+insert into product values(product_num.nextval, '라운드랩 1025 독도 토너 200ml(기획+50ml 증정)', 15000, '라운드랩', 0);
