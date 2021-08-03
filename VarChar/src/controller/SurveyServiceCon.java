@@ -13,6 +13,7 @@ import model.MemberDAO;
 import model.MemberDTO;
 import model.SkinDAO;
 import model.SkinDTO;
+import model.SkinRecordDAO;
 
 @WebServlet("/SurveyServiceCon")
 public class SurveyServiceCon extends HttpServlet {
@@ -28,18 +29,28 @@ public class SurveyServiceCon extends HttpServlet {
 		
 		// member테이블에 skin_id 저장
 		MemberDAO m_dao = new MemberDAO();
-		int cnt = m_dao.updateSkin(id, result);
+		int m_cnt = m_dao.updateSkin(id, result);
 		
 		// 결과 페이지에 출력할 스킨 정보 DTO에 저장
 		SkinDAO s_dao = new SkinDAO();
 		SkinDTO s_dto = s_dao.pushSkin(result);
-		
-		if(cnt > 0) {
+		SkinRecordDAO sr_dao = new SkinRecordDAO();
+		int sr_cnt = sr_dao.record(info, s_dto);
+				
+		// Member 테이블에 Skin_id 저장 여부 확인
+		if(m_cnt > 0) {
 			System.out.println("스킨 ID 저장 성공");
 			session.setAttribute("info", info);
 			session.setAttribute("skin_dto", s_dto);
 		} else {
 			System.out.println("스킨 ID 저장 실패");
+		}
+		
+		// Skin_record 테이블에 기록 저장 여부 확인
+		if(sr_cnt > 0) {
+			System.out.println("스킨 기록 저장 성공");
+		} else {
+			System.out.println("스킨 기록 저장 성공");
 		}
 		
 		response.sendRedirect("survey-result.jsp");
