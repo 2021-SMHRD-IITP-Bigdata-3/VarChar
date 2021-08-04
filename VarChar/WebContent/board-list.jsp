@@ -160,7 +160,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -180,7 +180,6 @@
                 <span class="ml-4">설문조사</span>
               </a>
             </li>
-            
  
 		<li class="relative px-6 py-3">
 		<% if(info == null) { %>
@@ -322,7 +321,7 @@
           
           <li class="relative px-6 py-3">
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
               >
                 <svg
                   class="w-5 h-5"
@@ -346,7 +345,7 @@
            <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -536,7 +535,7 @@
                         ex)1
                       </td>
                       <td class="px-4 py-3 text-xs">
-                      <a href="https://www.naver.com/">
+                      <a href="board-view.jsp">
                       제목이 입력되는 곳 입니다.
                       </a>
                       </td>

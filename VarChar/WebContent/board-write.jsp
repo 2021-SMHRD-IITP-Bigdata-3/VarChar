@@ -137,7 +137,7 @@
             
             <li class="relative px-6 py-3">
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
               >
                 <svg
                   class="w-5 h-5"
@@ -160,7 +160,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
-                href="forms.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -322,8 +322,7 @@
           
           <li class="relative px-6 py-3">
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
               >
                 <svg
                   class="w-5 h-5"
@@ -347,7 +346,7 @@
            <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -544,19 +543,15 @@
                   value="submit"
                   onClick="#"
                 >
-			등록
+				등록
                 </button>
                 
                 <button
                   class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                   onClick="history.go(-1)"
                 >
-                  뒤로
+                	 뒤로
                 </button>
-                
-
-            
-            
             
             </div>
         </main>
