@@ -494,6 +494,7 @@
         </header>
         <main class="h-full overflow-y-auto">
           <div class="container px-6 mx-auto grid">
+          	<form action="WriteServiceCon" method="post" enctype="multipart/form-data">
 			<!-- 본문 시작 -->
 			
             <!-- 한 칸 띄어주기 -->
@@ -513,6 +514,7 @@
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="제목을 입력하세요"
+                  name="title"
                 />
               </label>
               <br>
@@ -522,6 +524,7 @@
                   <input
                   	type = "file" accept=".gif, .jpg, .png"
                     class="block w-full pl-20 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    name ="fileName"
                   />
                 </div>
               </label>
@@ -533,26 +536,22 @@
                   rows="3"
                   placeholder="내용을 입력하세요"
                   style="margin-top: 4px; margin-bottom: 0px; height: 315px;"
+                  name ="content"
                 ></textarea>
               </label>
 
             </div>
-            
-                <button
-                  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                  value="submit"
-                  onClick="#"
-                >
-				등록
-                </button>
-                
+            	<input type="submit" 
+            	class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+            	value = "등록"
+            	/>
                 <button
                   class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                   onClick="history.go(-1)"
-                >
+                ><a href="board-list.jsp">
                 	 뒤로
-                </button>
-            
+                </a></button>
+            </form>
             </div>
         </main>
       </div>

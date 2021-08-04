@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="model.MemberDTO" %>
+<%@page import="model.BoardDAO"%>
+<%@page import="model.BoardDTO"%>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
@@ -21,6 +23,9 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	int num = Integer.parseInt(request.getParameter("num"));
+  	BoardDAO dao = new BoardDAO();
+  	BoardDTO dto = dao.showOne(num);
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -503,8 +508,8 @@
             <div
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
-              <label class="block text-sm dark:text-gray-400">
-              이 곳에는 제목이 쓰여질 예정입니다.
+              <label class="block text-sm dark:text-gray-400 text-center font-semibold">
+              	<%= dto.getBoard_title() %>
               </label>
             </div>
             
@@ -512,8 +517,11 @@
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block mt-4 text-sm">
+              <% if(dto.getFilename() != null) { %>
+								<img src="img/<%= dto.getFilename() %>"><br>
+							<% } %>
               <p class="mb-4 text-gray-600 dark:text-gray-400">
-              이 곳에는 내용이 쓰여질 예정입니다. 가나다라마바사아자차카타파하 아야어여오요우유으이
+              	<%= dto.getBoard_content() %>
               </p>
               </label>
 

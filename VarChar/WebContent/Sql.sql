@@ -542,3 +542,5 @@ insert into product_in values(proin_num.nextval, 21, 30);
 insert into product_in values(proin_num.nextval, 21, 28);
 insert into product_in values(proin_num.nextval, 21, 51);
 insert into product_in values(proin_num.nextval, 21, 10);
+
+select * from board;

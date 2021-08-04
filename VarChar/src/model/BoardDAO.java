@@ -102,7 +102,7 @@ public class BoardDAO {
 		public BoardDTO showOne(int num) {
 			try {
 				conn();
-				String sql = "select * from web_board where num = ?";
+				String sql = "select * from board where board_id = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, num);

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.BoardDAO" %>
+<%@ page import="model.BoardDTO" %>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
@@ -21,6 +24,8 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	BoardDAO dao = new BoardDAO();
+  	ArrayList<BoardDTO> board_list = dao.showBoard();
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -529,25 +534,29 @@
                   >
                   
                   <!-- 게시글 목록 -->
-                  
+                  <% 
+                  	for(int i=0; i<board_list.size(); i++) {
+                  %>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3 text-xs" style="text-align: center">
-                        ex)1
+                        <%= i+1 %>
                       </td>
                       <td class="px-4 py-3 text-xs">
-                      <a href="board-view.jsp">
-                      제목이 입력되는 곳 입니다.
+                      <a href="board-view.jsp?num=<%= board_list.get(i).getBoard_id() %>">
+                      	<%= board_list.get(i).getBoard_title() %>
                       </a>
                       </td>
                       <td class="px-4 py-3 text-xs" style="text-align: center">
                         <span
                           class="font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                         >
-                          닉네임
+                          	<%= board_list.get(i).getMember_id() %>
                         </span>
                       </td>
                     </tr>
-                    
+                    <%
+                  		}
+                    %>
 
                   </tbody>
                 </table>
