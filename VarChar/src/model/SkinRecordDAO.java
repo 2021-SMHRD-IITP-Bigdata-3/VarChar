@@ -17,7 +17,7 @@ public class SkinRecordDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@210.223.239.130:1521:xe";
 			String id = "hr";
 			String pw = "hr";
 			
