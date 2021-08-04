@@ -149,7 +149,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                href="board-list.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -172,7 +172,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -336,7 +336,7 @@
           <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                href="board-list.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -360,7 +360,7 @@
            <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -409,6 +409,7 @@
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
           >
             <!-- ·Î°í -->
+            <a href="index.jsp">
             <img
               class="object-cover"
               src="./assets/img/logo_main.png"
@@ -416,6 +417,7 @@
               alt="logo"
 			  align="left"
             />
+            </a>
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
               <div

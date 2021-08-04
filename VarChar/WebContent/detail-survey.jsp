@@ -164,7 +164,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                href="board-list.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -187,7 +187,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -358,7 +358,7 @@
           <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                href="board-list.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -382,7 +382,7 @@
            <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                href="survey.jsp"
               >
                 <svg
                   class="w-5 h-5"
@@ -430,25 +430,16 @@
           <div
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
           >
-            <!-- Mobile hamburger -->
-            <button
-              class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
-              @click="toggleSideMenu"
-              aria-label="Menu"
-            >
-              <svg
-                class="w-6 h-6"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
+            <!-- ·Î°í -->
+            <a href="index.jsp">
+            <img
+              class="object-cover"
+              src="./assets/img/logo_main.png"
+			  width = "150px"
+              alt="logo"
+			  align="left"
+            />
+            </a>            
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
               <div
