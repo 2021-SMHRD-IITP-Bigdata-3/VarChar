@@ -17,6 +17,7 @@
       defer
     ></script>
     <script src="./assets/js/init-alpine.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
   <% 
@@ -527,9 +528,65 @@
               </div>
               <span>알아보러 가기 &RightArrow;</span>
             </a>
+
+            <div
+              class="max-w-2xl px-2 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+            >
+            <img
+              class="object-cover"
+              src="./assets/img/product_img/1.jpg"
+              />
+			  <div class="p-4 md:p-6">
+			    <p class="text-blue-500 font-semibold text-xs mb-1 leading-none">New</p>
+			    <h3 class="font-semibold mb-2 text-xl leading-tight sm:leading-normal">있어보이는 어려운 화장품 이름</h3>
+			    <div class="text-sm flex items-center">
+			      <p>대충 사람들이 살 것 같은 화장품 설명 내용</p>
+			    </div>
+			  </div>
+            </div>
+
+
+			<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+              <!-- Card -->
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <img src="./assets/img/product_img/1.jpg"/>
+                </div>
+                <div>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    화장품 이름
+                  </p>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    간단한 화장품 설명
+                  </p>                  
+                </div>
+              </div>
+            </div>
             
-            
-            
+<div class="min-h-screen bg-gray-100 flex justify-center items-center">
+  <div class="container flex justify-center">
+    <div class="max-w-sm py-32">
+      <div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
+        <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+        <div class="py-6 px-8 rounded-lg bg-white">
+          <h1 class="font-semibold mb-2 text-xl leading-tight sm:leading-normal">I'm supper dog for you.</h1>
+          <p class="text-sm flex items-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
+          <button class="mt-6 py-2 px-4 bg-yellow-400 text-gray-800 font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
             
             
             </div>
