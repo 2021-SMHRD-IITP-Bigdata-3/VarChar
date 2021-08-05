@@ -543,4 +543,31 @@ insert into product_in values(proin_num.nextval, 21, 28);
 insert into product_in values(proin_num.nextval, 21, 51);
 insert into product_in values(proin_num.nextval, 21, 10);
 
-select * from board;
+select * from skin;
+
+// 피부타입(skin) 테이블 수정
+update skin set skin_exp = '피지 -> 염증 -> 색소침착의 악순환이 반복되고 색소침착이 더 오래 남아 있는 피부에요.' where skin_type = 'OSPT';
+update skin set skin_exp = '감정변화나 여러 자극으로 얼굴이 쉽게 빨개지고 곳곳에 여드름이 보이는 피부에요.' where skin_type = 'OSNT';
+update skin set skin_exp = '다양한 피부트러블과 함께 색소침착, 피부노화까지 겪고 있는 총제적 난국의 피부에요.' where skin_type = 'OSPW';
+update skin set skin_exp = '햇빛을 받으면 잘 익은 랍스터처럼 쉽게 붉어지고 번들거리며 종종 여드름이 보이는 피부에요.' where skin_type = 'OSNW';
+update skin set skin_exp = '번들거림은 있지만, 딱히 흠 잡을 곳 없이 광채가 나는 피부에요.' where skin_type = 'ORNT';
+update skin set skin_exp = '민감성 피부의 흔적으로 인해 매일 아침마다 넓은 모공과 주름, 반점을 마주하는 피부에요.' where skin_type = 'ORPW';
+update skin set skin_exp = '피부 트러블은 잘 나지 않지만, 주름과 노화가 있는 피부에요.' where skin_type = 'ORNW';
+update skin set skin_exp = '햇빛으로 인해 주근깨나 색소침착(검은반점 등)이 쉽게 생겨 고민일 수 있지만 장점이 훨씬 많은 피부에요.' where skin_type = 'ORPT';
+update skin set skin_exp = '심한 건조함과 화끈거림을 자주 느끼고 각질과 붉은 기를 많이 보이는 피부에요.' where skin_type = 'DSNT';
+update skin set skin_exp = '피부가 매우 민감하고 얇아 쉽게 자극을 느끼고, 색소침착도 잘 생기며, 주름도 보이는 피부에요.' where skin_type = 'DSPW';
+update skin set skin_exp = '피부상태가 매일매일 변할 수 있고 가려움, 따가움, 홍조 등과 주름이 보이는 피부에요.' where skin_type = 'DSNW';
+update skin set skin_exp = '민감한 피부로 매순간 고통 받을 수 있고, 특히 습진, 각질, 색소침착이 잘 나타나는 피부에요.' where skin_type = 'DSPT';
+update skin set skin_exp = '전에는 피부에 별 문제가 없어 방치했지만, 지금은 색소침착(검은반점)과 주름이 보이는 피부에요.' where skin_type = 'DRPW';
+update skin set skin_exp = '젋을 때는 좋은 피부를 가지고 있지만, 건조함과 함께 빠른 노화를 겪는 피부에요.' where skin_type = 'DRNW';
+update skin set skin_exp = '햇빛으로 색소침착(기미, 검은반점 등)이 나타나기 쉽지만 아름답게 관리할 수 있는 피부에요.' where skin_type = 'DRPT';
+update skin set skin_exp = '피부 복권에 당첨됐네요! 피부 결도 좋고 깨끗한 피부에요.' where skin_type = 'DRNT';
+update skin set skin_exp = '가장 이상적인 피부로, 수분은 많고 유분은 적은 피부에요.' where skin_type = '아기피부';
+update skin set skin_exp = '혈색도 좋고, 모공도 좁고, 트러블도 잘 생기지 않는 아주 건강한 피부에요.' where skin_type = '중성';
+update skin set skin_type = '중성피부' where skin_type = '중성';
+update skin set skin_exp = '모공이 크고 유분이 많아 번들거리고 여드름이나 뾰루지 같은 트러블이 쉽게 생기는 피부에요.' where skin_type = '지성피부';
+update skin set skin_type = '지성피부' where skin_type = '지성';
+update skin set skin_exp = '건조한 환경에서 피부당김과 각질이 잘 생기고 약한 자극에도 쉽게 빨개지는 피부에요.' where skin_type = '건성';
+update skin set skin_type = '건성피부' where skin_type = '건성';
+update skin set skin_exp = 'T존(이마, 코, 턱 부분)은 유분기가 많은 지성, U존(양볼 부분)은 수분이 부족한 건성의 특징을 보이는 피부에요.' where skin_type = '복합성피부';
+update skin set skin_type = '복합성피부' where skin_type = '복합성';
