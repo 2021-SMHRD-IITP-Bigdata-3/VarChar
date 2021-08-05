@@ -25,7 +25,55 @@
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
   	BoardDAO dao = new BoardDAO();
+  	String tempPage = request.getParameter("page");
+  	// cPage(현재 페이지)
+  	int cPage = 0;
+  	
+  	if(tempPage == null || tempPage.length() == 0) {
+  		cPage = 1;
+  	}
+  	
+  	try {
+  		cPage = Integer.parseInt(tempPage);
+  	} catch(NumberFormatException e) {
+  		cPage = 1;
+  	}
+  	
+  	int len = 10;
+  	
+  	// 전체 데이터 개수
+  	int totalRows = dao.getTotalRows();
+  	// 총 페이지 수
+  	int totalPages = totalRows % len == 0 ? totalRows / len : (totalRows/len) + 1;
+  	
+  	if(totalPages == 0) {
+  		totalPages = 1;
+  	}
+  	
+  	if(cPage > totalPages) {
+  		cPage = 1;
+  	}
+  	
+  	// start : 각 페이지의 데이터 시작점
+  	int start = (cPage - 1) * len;
+  	
+  	// 구해낸 start로 데이터 뽑아냄
   	ArrayList<BoardDTO> board_list = dao.showBoard();
+  	
+  	// 페이징 처리하기
+  	// 페이지 처음과 끝을 지정
+  	int pageLength = 5;
+  	int currentBlock = cPage % pageLength == 0 ? cPage/pageLength : (cPage/pageLength) + 1;
+  	int startPage = (currentBlock - 1) * pageLength + 1;
+  	int endPage = startPage + pageLength - 1;
+  	
+  	if(totalPages == 0) {
+  		totalPages = 1;
+  	}
+  	
+  	if(endPage > totalPages) { 
+  		endPage = totalPages;
+  	}
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -510,11 +558,6 @@
             <div><br></div>
                  
                  
-                 
-                 
-                 
-                 
-                 
               <!-- 게시판 목록 -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
             
@@ -535,7 +578,8 @@
                   
                   <!-- 게시글 목록 -->
                   <% 
-                  	for(int i=0; i<board_list.size(); i++) {
+                  	int end = (start+len > board_list.size()) ? board_list.size() : start+len;
+                  	for(int i=start; i < end; i++) {
                   %>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3 text-xs" style="text-align: center">
@@ -571,10 +615,14 @@
                 <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
                   <nav aria-label="Table navigation">
                     <ul class="inline-flex items-center">
+                    <%
+                    	if(cPage > 1) {
+                    %>
                       <li>
                         <button
                           class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
                           aria-label="Previous"
+                          onclick="location.href='board-list.jsp?page=<%=cPage - 1%>'"
                         >
                           <svg
                             aria-hidden="true"
@@ -586,60 +634,38 @@
                               clip-rule="evenodd"
                               fill-rule="evenodd"
                             ></path>
-                          </svg>
+                          </svg>  
                         </button>
                       </li>
+                      <%
+                    	}
+                    	for(int i = startPage; i<=endPage; i++) {
+                      %>
                       <li>
                         <button
+                          <% if(i != cPage) { %>
                           class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          1
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          2
-                        </button>
-                      </li>
-                      <li>
-                        <button
+                          <% } else { %>
                           class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple"
+                          <% }  %>
                         >
-                          3
+                          <a href="board-list.jsp?page=<%= i %>"><%= i %></a>
                         </button>
                       </li>
+                      <%
+                    	}
+                      %>
                       <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          4
-                        </button>
-                      </li>
-                      <li>
-                        <span class="px-3 py-1">...</span>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          8
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          9
-                        </button>
-                      </li>
+                      <%
+                      	if(cPage < totalPages) {
+                      %>
                       <li>
                         <button
                           class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
                           aria-label="Next"
+                          onclick="location.href='board-list.jsp?page=<%=cPage + 1%>'"
                         >
-                          <svg
+                        <svg
                             class="w-4 h-4 fill-current"
                             aria-hidden="true"
                             viewBox="0 0 20 20"
@@ -652,6 +678,9 @@
                           </svg>
                         </button>
                       </li>
+                      <%
+                      	}
+                      %>
                     </ul>
                   </nav>
                 </span>
@@ -665,13 +694,10 @@
                   style="float: right;"
                   onclick="location.href='board-write.jsp'"
                 >
-                  글 쓰기
+                  	글 쓰기
                 </button>
               </div>
             <% } %> 
-            
-            
-            
             
             </div>
         </main>

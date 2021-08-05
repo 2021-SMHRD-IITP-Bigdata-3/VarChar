@@ -15,6 +15,7 @@ public class BoardDAO {
 	ResultSet rs = null;
 	BoardDTO dto = null;
 	int cnt = 0;
+	int rows = 0;
 	
 	public void conn() {	
 		try {
@@ -127,5 +128,27 @@ public class BoardDAO {
 			}
 			
 			return dto;
+		}
+		
+		public int getTotalRows() {
+			try {
+				conn();
+				
+				String sql = "select count(board_id) from board";
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				
+				int idx = 0;
+				if(rs.next()) {
+					rows = rs.getInt(++idx);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			return rows;
 		}
 }
