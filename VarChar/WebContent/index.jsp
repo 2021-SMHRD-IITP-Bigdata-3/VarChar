@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.ProductDAO" %>
+<%@ page import="model.ProductDTO" %>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
@@ -81,6 +84,8 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	ProductDAO product_dao = new ProductDAO();
+  	ArrayList<ProductDTO> product_list = product_dao.showProduct();
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -607,11 +612,18 @@
 
 <div class="list con">
     <ul class="row">
+    	<%
+    		int len = product_list.size();
+	    	for(int i=0; i<len; i++) { 
+    	%>
         <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/1.jpg" alt=""></div>
-            <div class="product-name">구달 청귤 비타C 잡티 세럼플러스 70ml</div>
-            <div class="product-price">45000</div>
+            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
+            <div class="product-name"><%= product_list.get(i).getProduct_name() %></div>
+            <div class="product-price"><%= product_list.get(i).getProduct_price() %></div>
         </li>
+        <%
+	    	}
+        %>
         <li class="cell">
             <div class="img-box"><img src="./assets/img/product_img/2.jpg" alt=""></div>
             <div class="product-name">구달 청귤 비타C 잡티 세럼마스크(6+4매)</div>
