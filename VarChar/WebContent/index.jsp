@@ -62,6 +62,7 @@
         width: calc(100% / 2);
     }
 }
+
   </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -587,7 +588,7 @@
               </div>
               <span>알아보러 가기 &RightArrow;</span>
             </a>
-
+          
             <div
               class="max-w-2xl px-2 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
@@ -605,27 +606,27 @@
             </div>
 
 
-<div class="list con">
+<div class="list_con">
     <ul class="row">
         <li class="cell">
             <div class="img-box"><img src="./assets/img/product_img/1.jpg" alt=""></div>
-            <div class="product-name">단가라 ops</div>
-            <div class="product-price">19800</div>
+            <div class="product-name">구달 청귤 비타C 잡티 세럼플러스 70ml</div>
+            <div class="product-price">45000</div>
         </li>
         <li class="cell">
             <div class="img-box"><img src="./assets/img/product_img/2.jpg" alt=""></div>
-            <div class="product-name">단가라 ops</div>
-            <div class="product-price">19800</div>
+            <div class="product-name">구달 청귤 비타C 잡티 세럼마스크(6+4매)</div>
+            <div class="product-price">18000</div>
         </li>
         <li class="cell">
             <div class="img-box"><img src="./assets/img/product_img/3.jpg" alt=""></div>
-            <div class="product-name">단가라 ops</div>
-            <div class="product-price">19800</div>
+            <div class="product-name">브링그린 티트리 시카 수딩 토너 510ml</div>
+            <div class="product-price">22000</div>
         </li>
         <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/4.jpg" alt=""></div>
-            <div class="product-name">단가라 ops</div>
-            <div class="product-price">19800</div>
+            <div class="img-box"><img src="./assets/img/product_img/4_1.JPG" alt=""></div>
+            <div class="product-name">에스트라 아토베리어 365 하이드로 수딩크림 60ml</div>
+            <div class="product-price">30000</div>
         </li>
         <li class="cell">
             <div class="img-box"><img src="http://bnx.oa.gg/img/bnx_16fw_visual_05_list.jpg" alt=""></div>
@@ -639,7 +640,6 @@
         </li>
     </ul>
 </div>
-            
             
             </div>
         </main>
