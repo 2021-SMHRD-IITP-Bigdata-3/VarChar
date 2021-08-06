@@ -16,6 +16,8 @@
     margin-right: auto;
 }
 .cell { float: left;
+	width : 173px;
+	height : 257px;
     box-sizing: border-box;
     margin-bottom: 20px;
 }
