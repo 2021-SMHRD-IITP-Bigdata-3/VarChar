@@ -695,15 +695,15 @@
 				}
 				
 				if((x>-2 && x<2) && (y>-2 && y<2)) {
-          			result = "중성";	
+          			result = "중성피부";	
           		} else if(x<=0 && y>=0) {
           			result = "아기피부";
           		} else if(x<=0 && y<=0) {
-          			result = "건성";
+          			result = "건성피부";
           		} else if(x>=0 && y>=0) {
-          			result = "지성";
+          			result = "지성피부";
           		} else if(x>=0 && y<=0) {
-          			result = "복합성";
+          			result = "복합성피부";
           		}
 				
 				location.href = "SurveyServiceCon?result=" + result;
