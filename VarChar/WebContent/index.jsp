@@ -610,48 +610,23 @@
             </div>
 
 
-<div class="list con">
-    <ul class="row">
-    	<%
-    		int len = product_list.size();
-	    	for(int i=0; i<len; i++) { 
-    	%>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
-            <div class="product-name"><%= product_list.get(i).getProduct_name() %></div>
-            <div class="product-price"><%= product_list.get(i).getProduct_price() %></div>
-        </li>
-        <%
-	    	}
-        %>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/2.jpg" alt=""></div>
-            <div class="product-name">구달 청귤 비타C 잡티 세럼마스크(6+4매)</div>
-            <div class="product-price">18000</div>
-        </li>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/3.jpg" alt=""></div>
-            <div class="product-name">브링그린 티트리 시카 수딩 토너 510ml</div>
-            <div class="product-price">22000</div>
-        </li>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/1.jpg" alt=""></div>
-            <div class="product-name">구달 청귤 비타C 잡티 세럼플러스 70ml</div>
-            <div class="product-price">45000</div>
-        </li>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/2.jpg" alt=""></div>
-            <div class="product-name">구달 청귤 비타C 잡티 세럼마스크(6+4매)</div>
-            <div class="product-price">18000</div>
-        </li>
-        <li class="cell">
-            <div class="img-box"><img src="./assets/img/product_img/3.jpg" alt=""></div>
-            <div class="product-name">브링그린 티트리 시카 수딩 토너 510ml</div>
-            <div class="product-price">22000</div>
-        </li>
-    </ul>
-</div>
-            
+				<div class="list con">
+				    <ul class="row">
+				    	<%
+				    		int len = product_list.size();
+				    		System.out.println(len);
+					    	for(int i=0; i<len; i++) { 
+				    	%>
+				        <li class="cell">
+				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
+				            <div class="product-name"><%= product_list.get(i).getProduct_name() %></div>
+				            <div class="product-price"><%= product_list.get(i).getProduct_price() %></div>
+				        </li>
+				        <%
+					    	}
+				        %>
+				    </ul>
+				</div>
             </div>
         </main>
       </div>
