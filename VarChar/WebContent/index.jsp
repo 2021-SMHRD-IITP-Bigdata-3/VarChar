@@ -4,6 +4,65 @@
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
+  <style type="text/css">
+ ul,li {list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.con {margin-left: auto;
+    margin-right: auto;
+}
+.cell { float: left;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.row::after {content: "";
+    display: block;
+    clear: both;
+}
+.img-box > img {display: block;
+    width: 173px;
+    height: 173px;
+}
+.con {
+    max-width: 1000px;
+}
+.bn-box {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.list > ul > li {
+    width: calc(100% / 6);
+}
+.list > ul > li {
+    padding: 0 10px;
+}
+.list > ul {
+    margin: 0 -10px;
+}
+.list > ul > li > .product-name {
+    text-align: Center;
+    font-weight: bold;
+}
+.list > ul > li:hover > .product-name {
+    text-decoration: underline;
+}
+.list > ul > li > .product-price {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.list > ul > li > .product-price::after {
+    content: "원";
+    font-size: 1rem;
+    font-weight:normal;
+}
+@media (max-width: 800px) {
+    .list > ul > li {
+        width: calc(100% / 2);
+    }
+}
+  </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VarChar규팀 열정!</title>
@@ -546,48 +605,41 @@
             </div>
 
 
-			<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-              <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <img src="./assets/img/product_img/1.jpg"/>
-                </div>
-                <div>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    화장품 이름
-                  </p>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    간단한 화장품 설명
-                  </p>                  
-                </div>
-              </div>
-            </div>
-            
-<div class="min-h-screen bg-gray-100 flex justify-center items-center">
-  <div class="container flex justify-center">
-    <div class="max-w-sm py-32">
-      <div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-        <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
-        <div class="py-6 px-8 rounded-lg bg-white">
-          <h1 class="font-semibold mb-2 text-xl leading-tight sm:leading-normal">I'm supper dog for you.</h1>
-          <p class="text-sm flex items-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
-          <button class="mt-6 py-2 px-4 bg-yellow-400 text-gray-800 font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">Buy Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="list con">
+    <ul class="row">
+        <li class="cell">
+            <div class="img-box"><img src="./assets/img/product_img/1.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+        <li class="cell">
+            <div class="img-box"><img src="./assets/img/product_img/2.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+        <li class="cell">
+            <div class="img-box"><img src="./assets/img/product_img/3.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+        <li class="cell">
+            <div class="img-box"><img src="./assets/img/product_img/4.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+        <li class="cell">
+            <div class="img-box"><img src="http://bnx.oa.gg/img/bnx_16fw_visual_05_list.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+        <li class="cell">
+            <div class="img-box"><img src="http://bnx.oa.gg/img/bnx_16fw_visual_06_list.jpg" alt=""></div>
+            <div class="product-name">단가라 ops</div>
+            <div class="product-price">19800</div>
+        </li>
+    </ul>
 </div>
 
-            
             
             </div>
         </main>
