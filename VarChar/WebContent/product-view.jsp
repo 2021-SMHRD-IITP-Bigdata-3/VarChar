@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.ProductDTO" %>
+<%@ page import="model.ProductDAO" %>
+<%@ page import="model.IngredientDTO" %>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
@@ -22,6 +26,8 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	ProductDAO pro_dao = new ProductDAO();
+  	ArrayList<ProductDTO> pro_dto = pro_dao.showProduct();
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -499,7 +505,7 @@
             </div>
 
             <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">2</span>
+              <span class="text-5xl"><img src="./assets/img/product_img/1_2.jpg"></span>
             </div>
 
             <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
@@ -515,7 +521,7 @@
             <template x-for="i in 4">
               <div class="flex-1 px-2">
                 <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                  <span x-text="i" class="text-2xl"></span>
+                  <span x-img="" class="text-2xl"><img src="./assets/img/product_img/<%= pro_dto.get(0).getProduct_id() %>.jpg"/></span>
                 </button>
               </div>
             </template>
@@ -523,23 +529,38 @@
         </div>
       </div>
       <div class="md:flex-1 px-4">
-        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">여긴 상품의 이름이 나올 것</h2>
-        <p class="mb-2 text-gray-500 text-sm">여긴 회사 이름이 나올 것</p>
+      	<!-- 상품 이름 -->
+        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.get(0).getProduct_name() %></h2>
+        <!-- 회사 이름 -->
+        <p class="mb-2 text-gray-500 text-sm"><%= pro_dto.get(0).getProduct_manu() %></p>
         <div class="mb-2 flex items-center space-x-4 my-4">
           <div>
-            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">550000</span>
+          	<!-- 가격 -->
+            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.get(0).getProduct_price() %></span>
               <span class=" text-indigo-400 mr-1 mt-1">원</span>
           </div>
         </div>
-
-        <p class="text-gray-500">상품 설명을 적어봅시다. 123123123가나다라마바사아 아야어여성분 성분 성분</p>
-
+	
+		<% 
+			ArrayList<IngredientDTO> ingre_dto = pro_dao.getProIngredient(1);
+			int len = ingre_dto.size();
+			
+			for(int i=0; i<len; i++) {
+		%>
+        	<p class="text-gray-500"><%= ingre_dto.get(i).getKor_name() %></p>
+		<%
+			}
+		%>
         <div class="flex py-4 space-x-4">
           <div class="relative">
+          <% int cnt = pro_dao.getIngreOG(1); %>
+          <%= cnt %>
+          
+          
           추천타입이이이이비123123123123
           </div> 
         </div>
-        <div class = " justify-center">
+        <div class = "justify-center items-center">
                 <button
                   class=" px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                 >

@@ -2,6 +2,8 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.SkinDAO" %>
+<%@ page import="model.SkinDTO" %>
 <%@ page import="model.ProductDAO" %>
 <%@ page import="model.ProductDTO" %>
 <!DOCTYPE html>
@@ -567,10 +569,17 @@
           <% if(info != null) { %>
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               <%= info.getMember_name() %>님
-              <br>피부에 양보하세요!
+              <br>피부에 양보하세요!<br/>
+              <%
+              	if(info.getSkin_id() != 0)  { 
+              		SkinDAO skin_dao = new SkinDAO();
+              		SkinDTO skin_dto = skin_dao.printSkin(info.getSkin_id());
+              %>
+              	<%= skin_dto.getSkin_Type() %>
+              <%} %>
             </h2>
-            <% } %>
-<!-- 본문 시작 -->
+          <% } %>
+	<!-- 본문 시작 -->
             <!-- 한 칸 띄어주기 -->
             <div><br></div>
                  

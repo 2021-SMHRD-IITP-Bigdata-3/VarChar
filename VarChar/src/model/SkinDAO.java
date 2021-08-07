@@ -67,4 +67,28 @@ public class SkinDAO {
 		
 		return dto;
 	}
+	
+	public SkinDTO printSkin(int skin_id) {
+		try {
+			conn();
+			String sql = "select * from skin where skin_id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, skin_id);
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				int id = rs.getInt(1);
+				String type = rs.getString(2);
+				String exp = rs.getString(3);
+				
+				dto = new SkinDTO(id, type, exp);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return dto;
+	}
 }
