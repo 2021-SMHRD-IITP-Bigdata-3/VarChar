@@ -105,6 +105,111 @@ public class ProductDAO {
 		return info;
 	}
 	
+	// 검색 상품 보여주기 메소드
+	public ArrayList<ProductDTO> showSearchProduct(String text) {
+		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+		try {
+			conn();
+			String sql = "select * from Product where Product_name like ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%"+text+"%");
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				int product_id = rs.getInt("product_id");
+				String product_name = rs.getString("product_name");
+				int product_price = rs.getInt("product_price");
+				String product_manu = rs.getString("product_manu");
+				int product_grade = rs.getInt("product_grade");
+				String product_category = rs.getString("product_category");
+				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
+				
+				list.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return list;
+	}
+	
+	// 카테고리별 상품 보여주기 메소드
+		public ArrayList<ProductDTO> showCategoryProduct(String category) {
+			ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+			try {
+				conn();
+				System.out.println(category);
+				String sql = "select * from Product where Product_category = ?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, category);
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					int product_id = rs.getInt("product_id");
+					String product_name = rs.getString("product_name");
+					int product_price = rs.getInt("product_price");
+					String product_manu = rs.getString("product_manu");
+					int product_grade = rs.getInt("product_grade");
+					String product_category = rs.getString("product_category");
+					ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
+					
+					list.add(dto);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			return list;
+		}
+		
+		// 원하는 순서로 상품보여주기
+		public ArrayList<ProductDTO> showOrderProduct(int order) {
+			ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+			try {
+				conn();
+				
+				String sql = null;
+				
+				if(order == 2)
+					sql = "select * from Product order by product_price desc";
+				else if(order == 3)
+					sql = "select * from product order by product_price asc";
+				else if(order == 4)
+					sql = "select * from product order by product_grade desc";
+				
+				psmt = conn.prepareStatement(sql);
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					int product_id = rs.getInt("product_id");
+					String product_name = rs.getString("product_name");
+					int product_price = rs.getInt("product_price");
+					String product_manu = rs.getString("product_manu");
+					int product_grade = rs.getInt("product_grade");
+					String product_category = rs.getString("product_category");
+					ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
+					
+					list.add(dto);
+				}
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			return list;
+		}
+		
 	public ArrayList<IngredientDTO> getProIngredient(int product_id) {
 		ArrayList<IngredientDTO> ingre_list = new ArrayList<IngredientDTO>();
 		

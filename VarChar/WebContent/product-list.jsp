@@ -86,8 +86,36 @@
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	String category = null;
+  	String choice = null;
+  	boolean isSearch = false;
+  	
+  	if(session.getAttribute("search") != null) {
+  		isSearch = (Boolean) session.getAttribute("search");
+  	}
+  	 	
+  	if(request.getParameter("category") != null) {
+  		category = request.getParameter("category");
+  	}
+
+  	if(session.getAttribute("choice") != null) {
+  		choice = (String) session.getAttribute("choice");
+  	}
+  	
   	ProductDAO product_dao = new ProductDAO();
   	ArrayList<ProductDTO> product_list = product_dao.showProduct();
+  	
+  	if(isSearch) {
+  		System.out.println("1번 실행");
+  		product_list = (ArrayList) session.getAttribute("showPro");
+  		session.removeAttribute("search");
+  	} else if(category != null) {
+  		System.out.println("2번 실행");
+  		product_list = product_dao.showCategoryProduct(category);
+  	} else if(choice != null) {
+  		System.out.println("3번 실행");
+  		product_list = (ArrayList<ProductDTO>) session.getAttribute("showPro");
+  	}
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -561,12 +589,16 @@
                     ></path>
                   </svg>
                 </div>
+                <form action="ProductServiceCon" method="post" name="searchForm">
                 <input
                   class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                   type="text"
                   placeholder="상품 검색"
                   aria-label="Search"
+                  name = "searchText"
+                  onKeypress="javascript:if(event.keyCode==13) { searchForm.submit(); }"
                 />
+                </form>
               </div>
             </div>
             
@@ -574,14 +606,14 @@
             <div class="flex items-center">
             <a
               class="flex items-center justify-between p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="survey.jsp"
+              href="product-list.jsp?category=스킨케어"
             >
                 <span>스킨케어</span>
             </a>
             <a class = "flex items-center justify-between p-2 mb-8"></a>
             <a
               class="flex items-center justify-between p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="survey.jsp"
+              href="product-list.jsp?category=마스크/팩"
             >
                 <span>마스크/팩</span>
             </a>
@@ -602,12 +634,15 @@
             </div>
             
 			<div class="max-w-2xl px-2 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-			<select name="job" style="align:right">
-			    <option value="">등록순</option>
-			    <option value="높은가격순">높은가격순</option>
-			    <option value="낮은가격순">낮은가격순</option>
-			    <option value="별점순">별점순</option>
-			</select>
+			<form action="ProductServiceCon" method="post" name="orderForm">
+				<select name="order" style="align:right" onchange="javascript: orderForm.submit();" >
+					<option>선택</option>
+					<option value="1">등록순</option>
+				    <option value="2">높은가격순</option>
+				    <option value="3">낮은가격순</option>
+				    <option value="4">별점순</option>
+				</select>
+			</form>
 			
 				<div class="list con">
 				<span><br></span>
@@ -619,7 +654,7 @@
 				    	%>
 				        <li class="cell">
 				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
-				            <div class="product-name dark:text-gray-200"><%= product_list.get(i).getProduct_name() %></div>
+				            <div class="product-name dark:text-gray-200"><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
 				            <div class="product-price dark:text-gray-200"><%= product_list.get(i).getProduct_price() %></div>
 				        </li>
 				        <%
