@@ -630,7 +630,7 @@
 				    	%>
 				        <li class="cell">
 				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
-				            <div class="product-name"><%= product_list.get(i).getProduct_name() %></div>
+				            <div class="product-name"><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
 				            <div class="product-price"><%= product_list.get(i).getProduct_price() %></div>
 				        </li>
 				        <%

@@ -12,7 +12,6 @@ public class ProductDAO {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	ProductDTO info = null;
-	int cnt = 0;
 	
 	public void conn() {	
 		try {
@@ -45,7 +44,7 @@ public class ProductDAO {
 		}
 	}
 	
-	// 전체 게시글 보여주기 메소드
+	// 전체 상품 보여주기 메소드
 	public ArrayList<ProductDTO> showProduct() {
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 		try {
@@ -73,6 +72,37 @@ public class ProductDAO {
 		}
 		
 		return list;
+	}
+	
+	// 한 개의 상품 정보만 가져오기
+	public ProductDTO showOneProduct(int id) {
+		try {
+			conn();
+			String sql = "select * from Product where product_id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, id);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				int product_id = rs.getInt("product_id");
+				String product_name = rs.getString("product_name");
+				int product_price = rs.getInt("product_price");
+				String product_manu = rs.getString("product_manu");
+				int product_grade = rs.getInt("product_grade");
+				String product_category = rs.getString("product_category");
+				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
+				
+				info = dto;
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return info;
 	}
 	
 	public ArrayList<IngredientDTO> getProIngredient(int product_id) {
@@ -109,25 +139,35 @@ public class ProductDAO {
 		return ingre_list;
 	}
 	
-	public int getIngreOG(int product_id) {
-		int cnt = 0;
+	public ArrayList<Integer> getIngreCount(int product_id, String answer) {
+		ArrayList<Integer> cnt_list = new ArrayList<Integer>();
 		
 		try {
 			conn();
-			String sql = "select count(i.kor_name)\r\n" + 
-					"from product p, ingredient i , product_in pi\r\n" + 
-					"where p.product_id = pi.product_id\r\n" + 
-					"and i.ingredient_id = pi.ingredient_id\r\n" + 
-					"and p.product_id = ? \r\n" + 
-					"and i.o = 'g'";
+			String sql = "select count(case when o = ? then 1 end) as o,\r\n" + 
+					"	count(case when d = ? then 1 end) as d,\r\n" + 
+					"	count(case when s = ? then 1 end) as s,\r\n" + 
+					"	count(case when p = ? then 1 end) as p,\r\n" + 
+					"	count(case when w = ? then 1 end) as w\r\n" + 
+					"from ingredient where ingredient_id in (select ingredient_id from product_in where product_id = ?)";
 			
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, product_id);
+			
+			psmt.setString(1, answer);
+			psmt.setString(2, answer);
+			psmt.setString(3, answer);
+			psmt.setString(4, answer);
+			psmt.setString(5, answer);
+			psmt.setInt(6, product_id);
 			
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				cnt = rs.getInt(1);
+				cnt_list.add(rs.getInt("O"));
+				cnt_list.add(rs.getInt("D"));
+				cnt_list.add(rs.getInt("S"));
+				cnt_list.add(rs.getInt("P"));
+				cnt_list.add(rs.getInt("W"));
 			}
 			
 		} catch(Exception e) {
@@ -136,6 +176,6 @@ public class ProductDAO {
 			close();
 		}
 		
-		return cnt;
+		return cnt_list;
 	}
 }

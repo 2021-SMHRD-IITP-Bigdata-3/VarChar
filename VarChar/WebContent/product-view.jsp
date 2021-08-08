@@ -22,12 +22,23 @@
     ></script>
     <script src="./assets/js/init-alpine.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+	    .rotate-45 {
+	        --transform-rotate: 45deg;
+	        transform: rotate(45deg);
+	    }
+	
+	    .group:hover .group-hover\:flex {
+	        display: flex;
+	    }
+	</style>
   </head>
   <body>
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
+  	int product_id = Integer.parseInt(request.getParameter("id"));
   	ProductDAO pro_dao = new ProductDAO();
-  	ArrayList<ProductDTO> pro_dto = pro_dao.showProduct();
+  	ProductDTO pro_dto = pro_dao.showOneProduct(product_id);
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -501,11 +512,11 @@
         <div x-data="{ image: 1 }" x-cloak>
           <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
             <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl"><img src="./assets/img/product_img/1.jpg"></span>
+              <span class="text-5xl"><img src="./assets/img/product_img/<%= pro_dto.getProduct_id() %>.jpg"></span>
             </div>
 
             <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl"><img src="./assets/img/product_img/1_2.jpg"></span>
+              <span class="text-5xl">2</span>
             </div>
 
             <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
@@ -521,7 +532,7 @@
             <template x-for="i in 4">
               <div class="flex-1 px-2">
                 <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                  <span x-img="" class="text-2xl"><img src="./assets/img/product_img/<%= pro_dto.get(0).getProduct_id() %>.jpg"/></span>
+                  <span x-img="" class="text-2xl"><img src="./assets/img/product_img/<%= pro_dto.getProduct_id() %>.jpg"/></span>
                 </button>
               </div>
             </template>
@@ -530,19 +541,19 @@
       </div>
       <div class="md:flex-1 px-4">
       	<!-- 상품 이름 -->
-        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.get(0).getProduct_name() %></h2>
+        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.getProduct_name() %></h2>
         <!-- 회사 이름 -->
-        <p class="mb-2 text-gray-500 text-sm"><%= pro_dto.get(0).getProduct_manu() %></p>
+        <p class="mb-2 text-gray-500 text-sm"><%= pro_dto.getProduct_manu() %></p>
         <div class="mb-2 flex items-center space-x-4 my-4">
           <div>
           	<!-- 가격 -->
-            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.get(0).getProduct_price() %></span>
+            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.getProduct_price() %></span>
               <span class=" text-indigo-400 mr-1 mt-1">원</span>
           </div>
         </div>
 	
 		<% 
-			ArrayList<IngredientDTO> ingre_dto = pro_dao.getProIngredient(1);
+			ArrayList<IngredientDTO> ingre_dto = pro_dao.getProIngredient(product_id);
 			int len = ingre_dto.size();
 			
 			for(int i=0; i<len; i++) {
@@ -553,12 +564,18 @@
 		%>
         <div class="flex py-4 space-x-4">
           <div class="relative">
-          <% int cnt = pro_dao.getIngreOG(1); %>
-          <%= cnt %>
-          
-          
-          추천타입이이이이비123123123123
-          </div> 
+          <% 
+          	ArrayList<Integer> good_cnt = pro_dao.getIngreCount(pro_dto.getProduct_id(), "g");
+          	ArrayList<Integer> bad_cnt = pro_dao.getIngreCount(pro_dto.getProduct_id(), "b");
+          	String[] type = { "지성", "건성", "민감성", "색소침착성", "주름" };
+          	for(int i=0; i<5; i++) {
+          		
+          %>
+          	<%= type[i] %>  Good : <%= good_cnt.get(i) %> Bad : <%= bad_cnt.get(i) %><br/>
+          <%
+          	}
+          %>
+        	</div>
         </div>
         <div class = "justify-center items-center">
                 <button
