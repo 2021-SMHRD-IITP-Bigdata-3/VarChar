@@ -413,33 +413,6 @@
 			  align="left"
             />
             </a>
-            <!-- Search input -->
-            <div class="flex justify-center flex-1 lg:mr-32">
-              <div
-                class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
-              >
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg
-                    class="w-4 h-4"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                  type="text"
-                  placeholder="상품 검색"
-                  aria-label="Search"
-                />
-              </div>
-            </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- 나이트모드 겹치지 않게 칸 맞춤 공간 -->
               <li>
@@ -512,10 +485,16 @@
 		    <div class="hidden bg-teal-600 border-0 mt-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg" id="popover-id">
 		      <div>
 		        <div class="bg-teal-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-blueGray-100 uppercase rounded-t-lg">
-		          	테스트 설명
+		          	빠르고 간편? 정확하게?
 		        </div>
 		        <div class="text-white p-3">
-		          	테스트 설명 상세
+		          	<strong>빠르고 간편하게 알아보기 ▼</strong><br>
+		          	지성, 건성을 간편하게 알아볼 수 있는<br>
+		          	기초 피부타입 테스트 (5분)<br>
+		          	------------------------------------<br>
+		          	<strong>정확하게 알아보기 ▼</strong><br>
+		          	바우만 테스트를 통해 내 피부를<br>
+		          	타입으로 알아볼 수 있는 테스트 (15분)		          	
 		        </div>
 		      </div>
 		    </div>
