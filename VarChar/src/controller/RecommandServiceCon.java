@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.MemberDAO;
 import model.MemberDTO;
 import model.ProductDAO;
 import model.ProductDTO;
@@ -22,12 +23,14 @@ public class RecommandServiceCon extends HttpServlet {
 		
 		// 이전 페이지에서 사용자 세션 정보 가져오기
 		HttpSession session = request.getSession();
+		MemberDAO mem_dao = new MemberDAO();
 		MemberDTO info = (MemberDTO) session.getAttribute("info");
 		
 		ProductDAO pro_dao = new ProductDAO();
 		ArrayList<ProductDTO> recom_list = pro_dao.getRecomProduct(info.getSkin_id());
 		session.setAttribute("recom_list", recom_list);
-		
+		info = mem_dao.login(info.getMember_id(), info.getMember_pw());
+		session.setAttribute("info", info);
 		response.sendRedirect("recommend-page.jsp");
 	}
 }

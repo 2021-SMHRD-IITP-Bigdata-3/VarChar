@@ -40,6 +40,7 @@ public class SurveyServiceCon extends HttpServlet {
 		// Member 테이블에 Skin_id 저장 여부 확인
 		if(m_cnt > 0) {
 			System.out.println("스킨 ID 저장 성공");
+			info = m_dao.login(info.getMember_id(), info.getMember_pw());
 			session.setAttribute("info", info);
 			session.setAttribute("skin_dto", s_dto);
 		} else {
