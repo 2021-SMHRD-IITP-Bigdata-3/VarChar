@@ -548,7 +548,7 @@
               		SkinDAO skin_dao = new SkinDAO();
               		SkinDTO skin_dto = skin_dao.printSkin(info.getSkin_id());
               %>
-              	<%= skin_dto.getSkin_Type() %>
+              	<span style="color:#34D399"><%= skin_dto.getSkin_Type() %></span>
               <%} %>
             </h2>
           <% } %>
@@ -558,6 +558,8 @@
                  
                  
             <!-- 피부타입 버튼 -->
+            <% if(info != null) { %>
+            	<% if(info.getSkin_id() == 0) {  %>
             <a
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
               href="survey.jsp"
@@ -576,7 +578,8 @@
               </div>
               <span>알아보러 가기 &RightArrow;</span>
             </a>
-
+				<% } %>
+			<% } %>
             <div
               class="max-w-2xl px-2 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
