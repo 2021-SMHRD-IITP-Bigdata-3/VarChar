@@ -505,7 +505,7 @@
 	</script>
 	<!-- survey -->
 	<script type="text/javascript" src="./index.js"></script>
-	<script>
+	<script class="dark:text-gray-200">
 			Survey
 		    .StylesManager
 		    .applyTheme("modern");

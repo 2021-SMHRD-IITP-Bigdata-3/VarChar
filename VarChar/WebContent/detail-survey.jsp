@@ -25,8 +25,6 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
-    <script src="./assets/js/charts-lines.js" defer></script>
-    <script src="./assets/js/charts-pie.js" defer></script>
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
     <script src="https://unpkg.com/survey-jquery@1.8.58/survey.jquery.min.js"></script>
@@ -47,15 +45,9 @@
       :class="{ 'overflow-hidden': isSideMenuOpen }"
     >
       <!-- 웹 버전 사이드 바 -->
-      <aside
-        class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 where" 
-      >
+		<aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 where">
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-            href="#"
-          >
-          	VarChar
+          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200">
           </a>
           <ul class="mt-6">
           	<% if(info != null) { %>
@@ -501,7 +493,7 @@
             </ul>
           </div>
         </header>
-        <main class="h-full overflow-y-auto">
+        <main class="h-full overflow-y-auto dark:text-gray-200">
           <div class="container px-6 mx-auto grid">
           <% if(info != null) { %>
             <h2
@@ -512,8 +504,10 @@
             </h2>
             <% } %>
             <!-- 본문 -->
+            <div class="dark:text-gray-200">
             <div id="surveyElement" style="display:inline-block;width:380px;"></div>
         	<div id="surveyResult"></div>
+        	</div>
             <!-- 한 칸 띄어주기 -->
             <div><br></div>
         </main>

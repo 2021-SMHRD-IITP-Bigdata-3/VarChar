@@ -427,7 +427,7 @@
               <div
                 class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
               >
-				<span class="leading-tight tracking-tight font-bold text-gray-800 text-lg md:text-3xl dark:text-gray-200" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;力前&nbsp;沥焊</span>
+				<span class="leading-tight tracking-tight font-bold text-gray-800 text-lg md:text-3xl dark:text-gray-200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;力前&nbsp;沥焊</span>
               </div>
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
