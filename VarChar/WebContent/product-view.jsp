@@ -149,7 +149,7 @@
                     d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                   ></path>
                 </svg>
-                <span class="ml-4">상품 보기</span>
+                <span class="ml-4">상품보기</span>
               </a>
             </li>
             
@@ -427,7 +427,7 @@
               <div
                 class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
               >
-				<span class="leading-tight tracking-tight font-bold text-gray-800 text-lg md:text-3xl" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제품&nbsp;정보</span>
+				<span class="leading-tight tracking-tight font-bold text-gray-800 text-lg md:text-3xl dark:text-gray-200"" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제품&nbsp;정보</span>
               </div>
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -541,14 +541,14 @@
       </div>
       <div class="md:flex-1 px-4">
       	<!-- 상품 이름 -->
-        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.getProduct_name() %></h2>
+        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 dark:text-gray-200" text-2xl md:text-3xl"><%= pro_dto.getProduct_name() %></h2>
         <!-- 회사 이름 -->
-        <p class="mb-2 text-gray-500 text-sm"><%= pro_dto.getProduct_manu() %></p>
+        <p class="mb-2 text-gray-500 text-sm "><%= pro_dto.getProduct_manu() %></p>
         <div class="mb-2 flex items-center space-x-4 my-4">
           <div>
           	<!-- 가격 -->
-            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= pro_dto.getProduct_price() %></span>
-              <span class=" text-indigo-400 mr-1 mt-1">원</span>
+            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl dark:text-gray-200""><%= pro_dto.getProduct_price() %></span>
+              <span class=" text-indigo-400 mr-1 mt-1 dark:text-gray-200"">원</span>
           </div>
         </div>
 	
@@ -563,7 +563,7 @@
 			}
 		%>
         <div class="flex py-4 space-x-4">
-          <div class="relative">
+          <div class="relative dark:text-gray-200"">
           <% 
           	ArrayList<Integer> good_cnt = pro_dao.getIngreCount(pro_dto.getProduct_id(), "g");
           	ArrayList<Integer> bad_cnt = pro_dao.getIngreCount(pro_dto.getProduct_id(), "b");
