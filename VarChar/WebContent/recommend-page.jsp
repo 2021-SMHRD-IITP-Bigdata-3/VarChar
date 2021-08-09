@@ -552,20 +552,13 @@
           %>
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             <span style="color:#34D399"><%= skin_dto.getSkin_Type() %></span> 타입인 
-            <span style="color:#34D399"><%= info.getMember_name() %></span>님에게 추천하는 화장품이에요!
+            <span style="color:#34D399"><%= info.getMember_name() %></span>님에게<br> 추천하는 화장품이에요!
             </h2>
             <% } %>
             </div>
 
 			<div class="max-w-2xl px-2 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-			<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">추천 화장품</h2>
-			<select name="job" style="align:right">
-			    <option value="">등록순</option>
-			    <option value="높은가격순">높은가격순</option>
-			    <option value="낮은가격순">낮은가격순</option>
-			    <option value="별점순">별점순</option>
-			</select>
-			
+			<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="margin-bottom: -10px;">추천 화장품</h2>
 				<div class="list con">
 				<span><br></span>
 				    <ul class="row">

@@ -543,6 +543,7 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               <%= info.getMember_name() %>님
               <br>피부에 양보하세요!<br/>
+              내 피부타입 : 
               <%
               	if(info.getSkin_id() != 0)  { 
               		SkinDAO skin_dao = new SkinDAO();
