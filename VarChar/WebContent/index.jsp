@@ -8,8 +8,18 @@
 <%@ page import="model.ProductDTO" %>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
+
   <head>
   <style type="text/css"> 
+      .word {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 2 ;
+        -webkit-box-orient: vertical;
+    } 
  ul,li {list-style: none;
     padding: 0;
     margin: 0;
@@ -609,7 +619,7 @@
 				    	%>
 				        <li class="cell">
 				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
-				            <div class="product-name dark:text-gray-200" ><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
+				            <div class="product-name dark:text-gray-200 word" ><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
 				            <div class="product-price dark:text-gray-200"><%= format_price %></div>
 				        </li>
 				        <%
