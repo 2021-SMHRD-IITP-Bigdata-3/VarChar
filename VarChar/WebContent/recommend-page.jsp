@@ -558,7 +558,7 @@
             </div>
 
 			<div class="max-w-2xl px-2 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-			<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="margin-bottom: -10px;">추천 화장품</h2>
+			<h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="margin-bottom: -10px;" >추천 화장품</h2>
 				<div class="list con">
 				<span><br></span>
 				    <ul class="row">
