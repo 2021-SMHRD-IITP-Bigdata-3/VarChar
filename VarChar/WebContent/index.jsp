@@ -540,7 +540,7 @@
         <main class="h-full overflow-y-auto">
           <div class="container px-6 mx-auto grid">
           <% if(info != null) { %>
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            <h2 class="mt-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               <%= info.getMember_name() %>님
               <br>피부에 양보하세요!<br/>
               내 피부타입 : 
