@@ -26,11 +26,16 @@ public class RecommandServiceCon extends HttpServlet {
 		MemberDAO mem_dao = new MemberDAO();
 		MemberDTO info = (MemberDTO) session.getAttribute("info");
 		
+		// 피부타입에 맞는 화장품 목록 가져오기
 		ProductDAO pro_dao = new ProductDAO();
 		ArrayList<ProductDTO> recom_list = pro_dao.getRecomProduct(info.getSkin_id());
 		session.setAttribute("recom_list", recom_list);
+		
+		// 사용자 정보 업데이트 반영
 		info = mem_dao.login(info.getMember_id(), info.getMember_pw());
 		session.setAttribute("info", info);
+		
+		// 추천화장품 페이지로 이동
 		response.sendRedirect("recommend-page.jsp");
 	}
 }

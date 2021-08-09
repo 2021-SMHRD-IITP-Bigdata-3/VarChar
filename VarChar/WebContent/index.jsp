@@ -548,7 +548,7 @@
               		SkinDAO skin_dao = new SkinDAO();
               		SkinDTO skin_dto = skin_dao.printSkin(info.getSkin_id());
               %>
-              	<span style="color:#34D399"><%= skin_dto.getSkin_Type() %></span>
+              	<a href="RecommandServiceCon"><span style="color:#34D399"><%= skin_dto.getSkin_Type() %></span></a>
               <%} %>
             </h2>
           <% } %>
