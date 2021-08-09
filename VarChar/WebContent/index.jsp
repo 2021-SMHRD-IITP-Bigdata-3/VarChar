@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="ko">
   <head>
-  <style type="text/css">
+  <style type="text/css"> 
  ul,li {list-style: none;
     padding: 0;
     margin: 0;

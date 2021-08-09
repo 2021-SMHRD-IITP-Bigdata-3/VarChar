@@ -22,7 +22,7 @@
 	height : 257px;
     box-sizing: border-box;
     margin-bottom: 20px;
-}
+} 
 .row::after {content: "";
     display: block;
     clear: both;
