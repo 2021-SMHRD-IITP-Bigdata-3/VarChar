@@ -512,7 +512,7 @@
             </h2>
             <% } %>
             <!-- º»¹® -->
-            <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+            <div id="surveyElement" style="display:inline-block;width:380px;"></div>
         	<div id="surveyResult"></div>
             <!-- ÇÑ Ä­ ¶ç¾îÁÖ±â -->
             <div><br></div>
