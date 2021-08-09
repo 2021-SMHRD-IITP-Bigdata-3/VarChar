@@ -32,6 +32,6 @@ public class CreateServiceCon extends HttpServlet {
 			System.out.println("회원가입 실패");
 		}
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("login.jsp");
 	}
 }

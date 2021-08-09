@@ -620,16 +620,16 @@
             <a class = "flex items-center justify-between p-2 mb-8"></a>
             <a
               class="flex items-center justify-between p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="survey.jsp"
+              href="product-list.jsp?category=클렌징/필링"
             >
-                <span>카테고리1</span>
+                <span>클렌징/필링</span>
             </a>
             <a class = "flex items-center justify-between p-2 mb-8"></a>
             <a
               class="flex items-center justify-between p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="survey.jsp"
+              href="product-list.jsp?category=선케어"
             >
-                <span>카테고리2</span>
+                <span>선케어</span>
             </a>            
             </div>
             
