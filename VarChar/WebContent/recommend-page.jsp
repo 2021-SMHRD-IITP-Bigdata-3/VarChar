@@ -573,11 +573,12 @@
 				    		int len = product_list.size();
 				    		System.out.println(len);
 					    	for(int i=0; i<len; i++) { 
+					    		String format_price = String.format("%,d", product_list.get(i).getProduct_price());
 				    	%>
 				        <li class="cell">
 				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
 				            <div class="product-name dark:text-gray-200"><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
-				            <div class="product-price dark:text-gray-200"><%= product_list.get(i).getProduct_price() %></div>
+				            <div class="product-price dark:text-gray-200"><%= format_price %></div>
 				        </li>
 				        <%
 					    	}

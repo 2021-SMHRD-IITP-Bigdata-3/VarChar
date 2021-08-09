@@ -547,7 +547,8 @@
         <div class="mb-2 flex items-center space-x-4 my-4">
           <div>
           	<!-- °¡°Ý -->
-            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl dark:text-gray-200""><%= pro_dto.getProduct_price() %></span>
+          	<% String format_price = String.format("%,d", pro_dto.getProduct_price()); %>
+            <span class="leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl dark:text-gray-200""><%= format_price %></span>
               <span class=" text-indigo-400 mr-1 mt-1 dark:text-gray-200"">¿ø</span>
           </div>
         </div>
