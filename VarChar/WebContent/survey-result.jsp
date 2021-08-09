@@ -505,7 +505,7 @@
           	<button class="text-teal-500 bg-transparent border-2 border-solid border-teal-500 hover:bg-teal-500 hover:text-white active:bg-teal-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
           			style="border-color:#A4FFFF"
 		    >
-		    <a href="simple-survey.jsp">
+		    <a href="RecommandServiceCon">
 			  추천화장품 보러갈래?
 			 </a>
 			</button>

@@ -283,4 +283,47 @@ public class ProductDAO {
 		
 		return cnt_list;
 	}
+	
+	public ArrayList<ProductDTO> getRecomProduct(int skin_id) {
+		ArrayList<ProductDTO> recom_list = new ArrayList<ProductDTO>();
+		
+		try {
+			conn();
+			String sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category \r\n" + 
+					"from product p, ingredient i, product_in pi\r\n" + 
+					"where p.product_id = pi.product_id\r\n" + 
+					"and i.ingredient_id = pi.ingredient_id\r\n" + 
+					"and i.o = 'g'\r\n" + 
+					"and i.o != 'b'\r\n" + 
+					"and i.s = 'g'\r\n" + 
+					"and i.s != 'b'\r\n" + 
+					"and i.p = 'n'\r\n" + 
+					"and i.w = 'n'\r\n" + 
+					"order by p.product_id";
+			
+			psmt = conn.prepareStatement(sql);
+			//psmt.setString(1, answer);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				int product_id = rs.getInt(1);
+				String product_name = rs.getString(2);
+				int product_price = rs.getInt(3);
+				String product_manu = rs.getString(4);
+				int product_grade = rs.getInt(5);
+				String product_category = rs.getString(6);
+				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
+				
+				recom_list.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return recom_list;
+	}
 }

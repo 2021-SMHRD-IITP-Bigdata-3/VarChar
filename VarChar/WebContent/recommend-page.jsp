@@ -2,6 +2,8 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.MemberDTO" %>
+<%@ page import="model.SkinDTO" %>
+<%@ page import="model.SkinDAO" %>
 <%@ page import="model.ProductDAO" %>
 <%@ page import="model.ProductDTO" %>
 <!DOCTYPE html>
@@ -87,7 +89,8 @@
   <% 
   	MemberDTO info = (MemberDTO) session.getAttribute("info");
   	ProductDAO product_dao = new ProductDAO();
-  	ArrayList<ProductDTO> product_list = product_dao.showProduct();
+  	ArrayList<ProductDTO> product_list = (ArrayList<ProductDTO>) session.getAttribute("recom_list");
+  	System.out.println(product_list.size());
   %>
     <div
       class="flexd h-screen bg-gray-50 dark:bg-gray-900"
@@ -542,12 +545,14 @@
           <div class="container px-6 mx-auto grid">
 <!-- 본문 시작 -->
 			<div class="max-w-2xl px-2 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-			123123
-          <% if(info != null) { %>
+          <% 
+          	if(info != null && info.getSkin_id() != 0) { 
+          		SkinDAO skin_dao = new SkinDAO();
+          		SkinDTO skin_dto = skin_dao.printSkin(info.getSkin_id());	
+          %>
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-              <%= info.getMember_name() %>님
-              <br>의 피부타입은 0000 입니다.
-              <br>피부타입에 맞는 화장품을 추천해드릴게요.
+            <span style="color:#34D399"><%= skin_dto.getSkin_Type() %></span> 타입인 
+            <span style="color:#34D399"><%= info.getMember_name() %></span>님에게 추천하는 화장품이에요!
             </h2>
             <% } %>
             </div>
@@ -571,7 +576,7 @@
 				    	%>
 				        <li class="cell">
 				            <div class="img-box"><img src="./assets/img/product_img/<%=product_list.get(i).getProduct_id() %>.jpg" alt=""></div>
-				            <div class="product-name dark:text-gray-200"><%= product_list.get(i).getProduct_name() %></div>
+				            <div class="product-name dark:text-gray-200"><a href="product-view.jsp?id=<%=product_list.get(i).getProduct_id()%>"><%= product_list.get(i).getProduct_name() %></a></div>
 				            <div class="product-price dark:text-gray-200"><%= product_list.get(i).getProduct_price() %></div>
 				        </li>
 				        <%
