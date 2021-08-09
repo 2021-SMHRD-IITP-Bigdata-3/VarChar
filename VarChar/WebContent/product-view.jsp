@@ -541,7 +541,7 @@
       </div>
       <div class="md:flex-1 px-4">
       	<!-- 상품 이름 -->
-        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 dark:text-gray-200" text-2xl md:text-3xl"><%= pro_dto.getProduct_name() %></h2>
+        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 dark:text-gray-200"><%= pro_dto.getProduct_name() %></h2>
         <!-- 회사 이름 -->
         <p class="mb-2 text-gray-500 text-sm "><%= pro_dto.getProduct_manu() %></p>
         <div class="mb-2 flex items-center space-x-4 my-4">
@@ -552,6 +552,7 @@
               <span class=" text-indigo-400 mr-1 mt-1 dark:text-gray-200"">원</span>
           </div>
         </div>
+        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 dark:text-gray-200" >평점 : <%= pro_dto.getProduct_grade() %> / 5.0</h2>
 	
 		<% 
 			ArrayList<IngredientDTO> ingre_dto = pro_dao.getProIngredient(product_id);

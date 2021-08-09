@@ -59,7 +59,7 @@ public class ProductDAO {
 				String product_name = rs.getString("product_name");
 				int product_price = rs.getInt("product_price");
 				String product_manu = rs.getString("product_manu");
-				int product_grade = rs.getInt("product_grade");
+				double product_grade = rs.getDouble("product_grade");
 				String product_category = rs.getString("product_category");
 				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 				list.add(dto);
@@ -89,7 +89,7 @@ public class ProductDAO {
 				String product_name = rs.getString("product_name");
 				int product_price = rs.getInt("product_price");
 				String product_manu = rs.getString("product_manu");
-				int product_grade = rs.getInt("product_grade");
+				double product_grade = rs.getDouble("product_grade");
 				String product_category = rs.getString("product_category");
 				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 				
@@ -121,7 +121,7 @@ public class ProductDAO {
 				String product_name = rs.getString("product_name");
 				int product_price = rs.getInt("product_price");
 				String product_manu = rs.getString("product_manu");
-				int product_grade = rs.getInt("product_grade");
+				double product_grade = rs.getDouble("product_grade");
 				String product_category = rs.getString("product_category");
 				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 				
@@ -154,7 +154,7 @@ public class ProductDAO {
 					String product_name = rs.getString("product_name");
 					int product_price = rs.getInt("product_price");
 					String product_manu = rs.getString("product_manu");
-					int product_grade = rs.getInt("product_grade");
+					double product_grade = rs.getDouble("product_grade");
 					String product_category = rs.getString("product_category");
 					ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 					
@@ -194,7 +194,7 @@ public class ProductDAO {
 					String product_name = rs.getString("product_name");
 					int product_price = rs.getInt("product_price");
 					String product_manu = rs.getString("product_manu");
-					int product_grade = rs.getInt("product_grade");
+					double product_grade = rs.getDouble("product_grade");
 					String product_category = rs.getString("product_category");
 					ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 					
@@ -311,7 +311,7 @@ public class ProductDAO {
 				String product_name = rs.getString(2);
 				int product_price = rs.getInt(3);
 				String product_manu = rs.getString(4);
-				int product_grade = rs.getInt(5);
+				double product_grade = rs.getDouble(5);
 				String product_category = rs.getString(6);
 				ProductDTO dto = new ProductDTO(product_id, product_name, product_price, product_manu, product_grade, product_category);
 				

@@ -5,10 +5,10 @@ public class ProductDTO {
 	private String product_name; // 상품명
 	private int product_price; // 가격
 	private String product_manu; // 회사명
-	private int product_grade; // 별점
+	private double product_grade; // 별점
 	private String product_category; // 카테고리
 	
-	public ProductDTO(int product_id, String product_name, int product_price, String product_manu, int product_grade, String product_category) {
+	public ProductDTO(int product_id, String product_name, int product_price, String product_manu, Double product_grade, String product_category) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -42,10 +42,10 @@ public class ProductDTO {
 	public void setProduct_manu(String product_manu) {
 		this.product_manu = product_manu;
 	}
-	public int getProduct_grade() {
+	public double getProduct_grade() {
 		return product_grade;
 	}
-	public void setProduct_grade(int product_grade) {
+	public void setProduct_grade(double product_grade) {
 		this.product_grade = product_grade;
 	}
 
