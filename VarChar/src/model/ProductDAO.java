@@ -289,20 +289,193 @@ public class ProductDAO {
 		
 		try {
 			conn();
-			String sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category \r\n" + 
-					"from product p, ingredient i, product_in pi\r\n" + 
-					"where p.product_id = pi.product_id\r\n" + 
-					"and i.ingredient_id = pi.ingredient_id\r\n" + 
-					"and i.o = 'g'\r\n" + 
-					"and i.o != 'b'\r\n" + 
-					"and i.s = 'g'\r\n" + 
-					"and i.s != 'b'\r\n" + 
-					"and i.p = 'n'\r\n" + 
-					"and i.w = 'n'\r\n" + 
-					"order by p.product_id";
+			String sql = "";
+			
+			switch(skin_id) {
+				case 1 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.p = 'g'";
+					break;
+				case 2 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'";
+					break;
+				case 3 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.p = 'g'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 4 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 5 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'";
+					break;
+				case 6 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.p = 'g'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 7 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 8 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.p = 'g'";
+					break;
+				case 9 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'";
+					break;
+				case 10 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.p = 'g'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 11 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 12 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.p = 'g'";
+					break;
+				case 13 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.p = 'g'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 14 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.w = 'g'";
+					break;
+				case 15 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'\r\n" + 
+							"and i.p = 'g'";
+					break;
+				case 16 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category\r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.d = 'g'\r\n" + 
+							"and i.d != 'b'";
+					break;
+				
+				case 19 :
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category \r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'";
+					break;
+				default : 
+					sql = "select distinct p.product_id, product_name, product_price, product_manu, product_grade, product_category \r\n" + 
+							"from product p, ingredient i, product_in pi\r\n" + 
+							"where p.product_id = pi.product_id\r\n" + 
+							"and i.ingredient_id = pi.ingredient_id\r\n" + 
+							"and i.o = 'g'\r\n" + 
+							"and i.o != 'b'\r\n" + 
+							"and i.s = 'g'\r\n" + 
+							"and i.s != 'b'\r\n" + 
+							"and i.p = 'n'\r\n" + 
+							"and i.w = 'n'\r\n" + 
+							"order by p.product_id";
+			}
 			
 			psmt = conn.prepareStatement(sql);
-			//psmt.setString(1, answer);
 			
 			rs = psmt.executeQuery();
 			

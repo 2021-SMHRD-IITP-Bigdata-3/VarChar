@@ -703,7 +703,7 @@ var json = {
 		                    "type": "radiogroup",
 		                    "name": "pn3",
 		                    "visibleIf": "{pn2} notempty",
-		                    "title": "상처가 났을 때, 갈색의 상처 자국이 얼마나 오래 남나요?(분홍색 아님)",
+		                    "title": "상처가 났을 때, 갈색의 상처 자국이 얼마나 오래 남나요?(분홍색은 아니에요!)",
 		                    "choices": [
 		                    	{
 		                            "value": 1,
